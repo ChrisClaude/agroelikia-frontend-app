@@ -1,0 +1,115 @@
+<header class="flex h-14">
+  <div class="flex border-b-3 border-solid border-gray-200 w-2/12">
+    <a href="#" class="py-4 pr-6 pl-8">Agroelikia</a>
+  </div>
+  <nav class="w-10/12 px-10 border-b-3 border-solid border-gray-200 h-full">
+    <ul class="flex h-full relative">
+      <li class="mr-10">
+        <a
+          href="#"
+          class="
+            inline-block
+            font-bold
+            py-4
+            px-2
+            -mb-active
+            border-b-3 border-solid border-green-600
+          "
+        >
+          Shop</a
+        >
+      </li>
+      <li class="mr-10">
+        <a href="#" class="inline-block py-4 px-2 h-full">Plant Care</a>
+      </li>
+      <li class="mr-10">
+        <a href="#" class="inline-block py-4 px-2 h-full">Workshops</a>
+      </li>
+      <li>
+        <a href="#" class="inline-block py-4 px-2 h-full">Blogs</a>
+      </li>
+      <li class="ml-auto mr-5">
+        <a href="#" class="inline-block py-4 px-2 h-full relative">
+          <span class="material-icons">shopping_bag</span>
+          <span class="items-count">4</span>
+        </a>
+      </li>
+      <li class="mr-5">
+        <a href="#" class="inline-block py-4 px-2 h-full">
+          <span class="material-icons">favorite_border</span>
+        </a>
+      </li>
+      <li *ngIf="auth.getUser()">
+        <div class="w-ful h-full flex items-center justify-center">
+          <span
+            class="
+              h-11
+              w-11
+              flex
+              items-center
+              justify-center
+              border border-black border-solid
+              rounded-full
+              p-4
+              cursor-pointer
+            "
+            (click)="toggleAccountDropdown()"
+            >Pic</span
+          >
+        </div>
+        <ul
+          class="
+            absolute
+            w-60
+            h-auto
+            right-0
+            bg-gray-200
+            mt-4
+            rounded-md
+            profile-dropdown
+          "
+          *ngIf="isAccDropdownOpen"
+        >
+          <li>
+            <a
+              href="#"
+              class="
+                block
+                p-2
+                rounded-t-md
+                text-center
+                hover:bg-green-600 hover:text-white
+              "
+            >
+              My account
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="
+                block
+                p-2
+                rounded-b-md
+                text-center
+                hover:bg-green-600 hover:text-white
+              "
+            >
+              Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li *ngIf="!auth.getUser()">
+        <div class="py-4 px-2 h-full flex items-center justify-center">
+          <button
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
+            (click)="login()"
+          >
+            Log in
+          </button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,25 @@
+.-mb-3px {
+  margin-bottom: -3px;
+}
+
+.material-icons {
+  font-size: 1.4rem;
+}
+
+.items-count {
+  @apply absolute bg-red-500 text-white w-5 h-5 rounded-2xl text-base flex items-center justify-center px-2 bottom-px right-0;
+}
+
+.-mb-active {
+  border-bottom-width: 3.199px;
+}
+
+.profile-dropdown::after {
+  content: " ";
+  top: -1rem;
+  right: 1rem;
+  position: absolute;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent rgba(229, 231, 235, 1) transparent;
+}
