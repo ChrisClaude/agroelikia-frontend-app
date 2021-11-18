@@ -9,8 +9,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from "./material/material.module";
 import {HeaderComponent} from './components/header/header.component';
-import {CarouselComponent} from './components/carousel/carousel.component';
-import {OpenCloseComponent} from './components/open-close/open-close.component';
 import {CarouselWithTranslateComponent} from './components/carousel-with-translate/carousel-with-translate.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {HomeComponent} from './pages/home/home.component';
@@ -23,6 +21,7 @@ import {CreateShopComponent} from './pages/shops/create-shop/create-shop.compone
 import {ListShopsComponent} from './pages/shops/list-shops/list-shops.component';
 import {EditShopComponent} from './pages/shops/edit-shop/edit-shop.component';
 import {DeleteShopDialogComponent} from '@/components/delete-shop-dialog/delete-shop-dialog.component';
+import {CarouselComponent} from "@/components/carousel/carousel.component";
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import {DeleteShopDialogComponent} from '@/components/delete-shop-dialog/delete-
     AppComponent,
     HeaderComponent,
     CarouselComponent,
-    OpenCloseComponent,
     CarouselWithTranslateComponent,
     LayoutComponent,
     HomeComponent,
