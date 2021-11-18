@@ -1,12 +1,12 @@
 <header class="flex h-14">
-  <div class="flex border-b-3 border-solid border-gray-200 w-2/12">
-    <a href="#" class="py-4 pr-6 pl-8">Agroelikia</a>
+  <div class="flex border-b-3 border-solid border-gray-200 w-2/12 text-2xl font-bold">
+    <a routerLink="/" class="py-4 pr-6 pl-8">Agroelikia</a>
   </div>
   <nav class="w-10/12 px-10 border-b-3 border-solid border-gray-200 h-full">
     <ul class="flex h-full relative">
       <li class="mr-10">
         <a
-          href="#"
+          routerLink="/"
           class="
             inline-block
             font-bold
@@ -16,17 +16,20 @@
             border-b-3 border-solid border-green-600
           "
         >
-          Shop</a
+          Acceuil</a
         >
       </li>
       <li class="mr-10">
-        <a href="#" class="inline-block py-4 px-2 h-full">Plant Care</a>
+        <a routerLink="/shop/list" class="inline-block py-4 px-2 h-full">Boutiques</a>
       </li>
       <li class="mr-10">
-        <a href="#" class="inline-block py-4 px-2 h-full">Workshops</a>
+        <a href="#" class="inline-block py-4 px-2 h-full">Conseils & Astuces</a>
+      </li>
+      <li class="mr-10">
+        <a href="#" class="inline-block py-4 px-2 h-full">À propos</a>
       </li>
       <li>
-        <a href="#" class="inline-block py-4 px-2 h-full">Blogs</a>
+        <a href="#" class="inline-block py-4 px-2 h-full">Contacts</a>
       </li>
       <li class="ml-auto mr-5">
         <a href="#" class="inline-block py-4 px-2 h-full relative">
@@ -40,74 +43,44 @@
         </a>
       </li>
       <li *ngIf="auth.getUser()">
-        <div class="w-ful h-full flex items-center justify-center">
-          <span
-            class="
-              h-11
-              w-11
-              flex
-              items-center
-              justify-center
-              border border-black border-solid
-              rounded-full
-              p-4
-              cursor-pointer
-            "
-            (click)="toggleAccountDropdown()"
-            >Pic</span
-          >
-        </div>
-        <ul
-          class="
-            absolute
-            w-60
-            h-auto
-            right-0
-            bg-gray-200
-            mt-4
-            rounded-md
-            profile-dropdown
-          "
-          *ngIf="isAccDropdownOpen"
-        >
-          <li>
-            <a
-              href="#"
-              class="
-                block
-                p-2
-                rounded-t-md
-                text-center
-                hover:bg-green-600 hover:text-white
-              "
-            >
-              My account
-            </a>
+        <ul class="flex h-full relative">
+          <li *ngIf="isShopOwner()" class="flex items-center mr-3">
+            <a mat-raised-button color="primary" routerLink="/shop/create">Enregistrez une Boutique</a>
           </li>
           <li>
-            <a
-              href="#"
-              class="
-                block
-                p-2
-                rounded-b-md
-                text-center
-                hover:bg-green-600 hover:text-white
-              "
-            >
-              Logout
-            </a>
+            <div class="w-ful h-full flex items-center justify-center">
+              <span
+                class="
+                  h-11
+                  w-auto
+                  flex
+                  items-center
+                  justify-center
+                  border border-black border-solid
+                  rounded-full
+                  p-4
+                  cursor-pointer
+                "
+                [matMenuTriggerFor]="profileMenu"
+              >{{user && user.username}}</span>
+            </div>
+            <mat-menu #profileMenu="matMenu">
+              <button mat-menu-item>Compte</button>
+              <button mat-menu-item (click)="logout()">Se deconnecter</button>
+            </mat-menu>
           </li>
         </ul>
+
+
       </li>
-      <li *ngIf="!auth.getUser()">
+      <li *ngIf="!user">
         <div class="py-4 px-2 h-full flex items-center justify-center">
-          <button
+          <a
             class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
-            (click)="login()"
+            routerLink="/login"
           >
-            Log in
-          </button>
+            Connexion
+          </a>
         </div>
       </li>
     </ul>

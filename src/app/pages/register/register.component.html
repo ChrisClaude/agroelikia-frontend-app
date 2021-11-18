@@ -1,0 +1,44 @@
+<div class="flex items-center min-h-full py-16 flex-col justify-center">
+  <h1><a routerLink="/">Agroelikia</a></h1>
+  <mat-card>
+    <mat-card-title class="text-center">Enregistrez vous</mat-card-title>
+    <mat-card-content class="mt-10 flex justify-center">
+      <form (ngSubmit)="submit()" [formGroup]="userRegistrationForm">
+        <p>
+          <mat-form-field class="w-full min-w-80">
+            <input formControlName="username" matInput name="username" placeholder="Username" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field class="w-full min-w-80">
+            <input formControlName="email" matInput name="email" placeholder="Email" type="text">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field class="w-full min-w-80">
+            <input formControlName="password" matInput name="password" placeholder="Password" type="password">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field class="w-full min-w-80">
+            <input formControlName="confirmPassword" matInput name="confirmPassword" placeholder="Confirm Password"
+                   type="password">
+          </mat-form-field>
+        </p>
+
+        <p *ngIf="error" class="text-white bg-red-500 p-1 w-80">
+          {{ error }}
+        </p>
+
+        <p class="flex justify-end">
+          <button mat-raised-button color="accent" type="submit">Enregistrez-vous</button>
+          <span class="w-3"></span>
+          <a routerLink="/login" mat-raised-button>Connectez-vous</a>
+        </p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

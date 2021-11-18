@@ -1,7 +1,7 @@
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: ["./src/**/*.{html,ts,scss}"],
+    content: ["./src/app/**/*.{html,ts,scss}"],
   },
   darkMode: "class", // or 'media' or 'class'
   theme: {
@@ -14,7 +14,19 @@ module.exports = {
       6: "6px",
       8: "8px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#059669'
+      },
+      minWidth: {
+        '0': '0',
+        '80': '20rem',
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        'full': '100%',
+      }
+    },
   },
   variants: {
     extend: {},

@@ -1,17 +1,36 @@
-<div class="carousel">
-  <ng-container *ngFor="let slide of slides; let i = index">
-    <img
-      *ngIf="i === currentSlide"
-      [src]="slide.src"
-      [alt]="slide.description"
-      [@slideAnimation]="animationType"
-      class="slide"
-    />
-  </ng-container>
-  <button class="prev-btn" (click)="onPreviousClick()">
-    <i class="material-icons">chevron_left</i>
-  </button>
-  <button class="next-btn" (click)="onNextClick()">
-    <i class="material-icons">chevron_chevron_right</i>
-  </button>
-</div>
+<swiper
+  [autoplay]="{
+      delay: 2500,
+      disableOnInteraction: false
+    }"
+  [centeredSlides]="true"
+  [navigation]="true"
+  [pagination]="{
+      clickable: true
+    }"
+  [spaceBetween]="30"
+  class="mySwiper"
+>
+  <ng-template swiperSlide>
+    <div class="h-96 w-full">
+      <img src="/assets/annie-spratt-GaLzDCnA5EI-unsplash.jpg" alt="Mama africa agriculture" class="bg-cover bg-top" />
+    </div>
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="h-96 w-full">
+      <img src="/assets/sfj_congo_farm_project_18.jpg" alt="Mama africa agriculture" class="bg-cover bg-top" />
+    </div>
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="h-96 w-full">
+      <img src="/assets/IMG_7368-1024x683.jpg" alt="Mama africa agriculture" class="bg-cover bg-top" />
+    </div>
+  </ng-template
+  >
+  <ng-template swiperSlide>
+    <div class="h-96 w-full">
+      <img src="/assets/IMG_6776-1024x683.jpg" alt="Mama africa agriculture" class="bg-cover bg-top" />
+    </div>
+  </ng-template
+  >
+</swiper>

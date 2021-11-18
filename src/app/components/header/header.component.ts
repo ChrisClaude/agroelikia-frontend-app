@@ -1,8 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { AuthService } from '@/services/auth.service';
-import { environment } from '@/environments/environment';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../auth/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,22 +8,31 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isAccDropdownOpen: boolean = false;
+  user: User | null = null;
 
   constructor(
     public auth: AuthService,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-
-  ngOnInit(): void {
-    console.log(this.auth.getUser());
+    private router: Router,
+  ) {
   }
 
-  toggleAccountDropdown(): void {
-    this.isAccDropdownOpen = !this.isAccDropdownOpen;
+  ngOnInit(): void {
+    this.user = this.auth.getUser();
   }
 
   login(): void {
-    this.document.location.href = `${environment.apiUrl}/connect/auth0`;
+    this.router.navigateByUrl('/login');
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/'])
+      .then(() => {
+        window.location.reload();
+      });
+  }
+
+  isShopOwner() {
+    return this.user && this.user.role.name.toLowerCase() === "shop owner";
   }
 }

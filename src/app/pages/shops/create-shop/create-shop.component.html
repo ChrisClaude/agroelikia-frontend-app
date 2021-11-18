@@ -1,0 +1,31 @@
+<app-layout>
+  <div>
+    <h1>Enregistrez votre boutique</h1>
+
+    <form (ngSubmit)="createShop()" [formGroup]="createShopForm">
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Nom de la boutique</mat-label>
+        <input matInput formControlName="name" placeholder="Casino" name="name" type="text">
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" placeholder="Casino est un super marcher" name="description" type="text">
+      </mat-form-field>
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Addresse</mat-label>
+        <input matInput formControlName="address" placeholder="32 Rue Massoukou, Moungali" name="address" type="text">
+      </mat-form-field>
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Telephone</mat-label>
+        <input matInput formControlName="telephone" placeholder="Format: 05-559-8673" name="telephone" type="tel">
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" type="submit">
+          Enregistrez
+        </button>
+      </div>
+    </form>
+  </div>
+</app-layout>

@@ -1,12 +1,21 @@
 import { HomeComponent } from '@/pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthRedirectComponent } from '@/components/auth-redirect/auth-redirect.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from "@/pages/login/login.component";
+import { RegisterComponent } from "@/pages/register/register.component";
+import {CreateShopComponent} from "@/pages/shops/create-shop/create-shop.component";
+import {ListShopsComponent} from "@/pages/shops/list-shops/list-shops.component";
+import { EditShopComponent } from './pages/shops/edit-shop/edit-shop.component';
+import {AuthenticationGuard} from "./auth/guards/authentication.guard";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'auth/:providerName/callback', component: AuthRedirectComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'shop/create', component: CreateShopComponent, canActivate: [AuthenticationGuard] },
+  { path: 'shop/edit/:id', component: EditShopComponent, canActivate: [AuthenticationGuard] },
+  { path: 'shop/list', component: ListShopsComponent, canActivate: [AuthenticationGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
 
