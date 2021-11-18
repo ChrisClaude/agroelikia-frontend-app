@@ -9,7 +9,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from "./material/material.module";
 import {HeaderComponent} from './components/header/header.component';
-import {CarouselWithTranslateComponent} from './components/carousel-with-translate/carousel-with-translate.component';
 import {LayoutComponent} from './components/layout/layout.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AuthRedirectComponent} from './components/auth-redirect/auth-redirect.component';
@@ -29,7 +28,6 @@ import {CarouselComponent} from "@/components/carousel/carousel.component";
     AppComponent,
     HeaderComponent,
     CarouselComponent,
-    CarouselWithTranslateComponent,
     LayoutComponent,
     HomeComponent,
     AuthRedirectComponent,
