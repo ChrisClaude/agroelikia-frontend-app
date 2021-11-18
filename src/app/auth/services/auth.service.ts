@@ -45,6 +45,21 @@ export class AuthService {
     );
   }
 
+  registerUser(newUser: NewUser): Observable<RegisteredUser> {
+    return this.http.post<RegisteredUser>(`${environment.apiUrl}/auth/local/register`, newUser).pipe(
+      tap({
+        next: data => {
+          AuthService.storeToken('token', data.jwt);
+          AuthService.storeToken('user', JSON.stringify(data.user));
+        },
+        error: err => {
+          console.error(err);
+        }
+      }),
+      catchError(this.errorService.handleError<RegisteredUser>('registerUser'))
+    );
+  }
+
   private loginWithExternalProviders(
     providerName: string,
     queryParams: Params

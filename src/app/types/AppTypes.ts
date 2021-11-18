@@ -23,3 +23,16 @@ interface Shop {
   address: string;
   telephone: string;
 }
+
+interface NewUser {
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface RegisteredUser {
+  jwt: string;
+  user: {
+    id: number, username: string, email: string, role: any
+  };
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { confirmPasswordIdentical } from "../../shared/confirm-password.directive";
-import { UserService } from '../../auth/services/user.service';
 import {Router} from '@angular/router';
+import {AuthService} from "../../auth/services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
   error: any = null;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -50,9 +50,7 @@ export class RegisterComponent implements OnInit {
         email: this.userRegistrationForm.get('email')?.value,
         password: this.userRegistrationForm.get('password')?.value
       };
-      this.userService.registerUser(newUser).subscribe(success => {
-        // TODO: store the registered user
-        alert(JSON.stringify(success));
+      this.authService.registerUser(newUser).subscribe(success => {
         // Reroute to another page
         this.router.navigateByUrl('/');
       });
