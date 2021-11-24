@@ -18,7 +18,7 @@ export class ListShopsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'address', 'telephone', 'action'];
 
   ngOnInit(): void {
-    this.shopService.getShops().subscribe(shops => this.shops = shops);
+    this.shopService.getUsersShops().subscribe(shops => this.shops = shops);
   }
 
   onEdit(shop: Shop) {
@@ -34,10 +34,7 @@ export class ListShopsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result && shop.id !== undefined) {
         this.shopService.deleteShop(shop.id).subscribe(success => {
-          this.router.navigate(['shop/list'])
-            .then(() => {
-              window.location.reload();
-            });
+          this.shopService.getUsersShops().subscribe(shops => this.shops = shops);
         });
       }
     });

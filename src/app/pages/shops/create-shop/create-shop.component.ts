@@ -25,7 +25,6 @@ export class CreateShopComponent implements OnInit {
 
   createShop () {
     if (this.createShopForm.valid) {
-      console.log(this.createShopForm.value);
       const newShop: Shop = {
         name: this.createShopForm.get('name')?.value,
         description: this.createShopForm.get('description')?.value,

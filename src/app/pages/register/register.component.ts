@@ -44,7 +44,6 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     if (this.userRegistrationForm.valid) {
-      console.log(this.userRegistrationForm.value);
       const newUser = {
         username: this.userRegistrationForm.get('username')?.value,
         email: this.userRegistrationForm.get('email')?.value,

@@ -28,6 +28,13 @@ export class ShopService {
     );
   }
 
+  getUsersShops(): Observable<Shop[]> {
+    return this.http.get<Shop[]>(`${environment.apiUrl}/shops/me`, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
+      .pipe(
+        catchError(this.errorService.handleError<Shop[]>('getShops'))
+      );
+  }
+
   getShopById(id: number): Observable<Shop> {
     return this.http.get<Shop>(`${environment.apiUrl}/shops/${id}`)
       .pipe(
