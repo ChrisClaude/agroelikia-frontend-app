@@ -13,11 +13,11 @@ export class ShopService {
 
   constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) { }
 
-  createShop(shop: Shop) {
+  createShop(shop: Shop): Observable<Shop> {
     console.log('post', shop);
-    return this.http.post(`${environment.apiUrl}/shops`, shop, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
+    return this.http.post<Shop>(`${environment.apiUrl}/shops`, shop, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
-        catchError(this.errorService.handleError('createShop', shop))
+        catchError(this.errorService.handleError<Shop>('createShop', shop))
       );
   }
 
