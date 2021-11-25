@@ -18,8 +18,30 @@
       </mat-form-field>
       <mat-form-field class="w-full" appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="Casino est un super marcher" name="description" type="text"></textarea>
+        <textarea matInput formControlName="description" placeholder="Casino est un super marcher" name="description"
+                  type="text"></textarea>
       </mat-form-field>
+
+      <div class="my-5 w-full" *ngIf="shopImages.length > 0">
+        <h2>Les images de la boutiques</h2>
+        <div class="flex justify-between flex-wrap">
+          <div *ngFor="let item of shopImages">
+            <img src="{{item.formats.thumbnail.url}}" alt="{{item.name}}">
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full py-2 my-6">
+        <h3>Ajoutez des images de votre boutique</h3>
+        <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+          <mat-icon class="mr-1">cloud_upload</mat-icon>
+          Choisissez vos fichiers
+        </button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+        <div *ngIf="image">
+          {{image.name}}
+        </div>
+      </div>
 
       <div>
         <button mat-raised-button color="primary" type="submit">

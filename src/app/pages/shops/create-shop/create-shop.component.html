@@ -27,10 +27,12 @@
           <mat-icon class="mr-1">cloud_upload</mat-icon>
           Choisissez vos fichiers
         </button>
-        <input hidden (change)="onFileSelected($event)" #fileInput type="file">
-        <div *ngIf="image">
-          {{image.name}}
-        </div>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" multiple>
+        <ng-container *ngIf="images">
+          <div *ngFor="let image of images">
+            {{image.name}}
+          </div>
+        </ng-container>
       </div>
 
       <div>

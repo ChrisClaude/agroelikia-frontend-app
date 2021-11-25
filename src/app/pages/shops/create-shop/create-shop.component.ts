@@ -18,7 +18,7 @@ export class CreateShopComponent implements OnInit {
     telephone: ['', Validators.required],
   });
 
-  image: File | null = null;
+  images: File[] = [];
 
   constructor(private fb: FormBuilder, private router: Router, private shopService: ShopService, private imageUpdateService: ImageUploadService) {
   }
@@ -27,7 +27,7 @@ export class CreateShopComponent implements OnInit {
   }
 
   createShop () {
-    if (this.createShopForm.valid && this.image !== null) {
+    if (this.createShopForm.valid && this.images !== null) {
       const newShop: Shop = {
         name: this.createShopForm.get('name')?.value,
         description: this.createShopForm.get('description')?.value,
@@ -36,7 +36,7 @@ export class CreateShopComponent implements OnInit {
       };
       this.shopService.createShop(newShop).subscribe(success => {
         if (success.id) {
-          this.imageUpdateService.uploadShopImage(this.image as File, success.id)
+          this.imageUpdateService.uploadShopImage(this.images, success.id)
             .subscribe(res => {
               console.log('upload response', res);
               this.router.navigateByUrl('shop/list');
@@ -51,7 +51,7 @@ export class CreateShopComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
-        this.image = ((event.target as HTMLInputElement).files as FileList)[0];
+        Array.from((event.target as HTMLInputElement).files as FileList).forEach(file => this.images.push(file));
         console.log(((event.target as HTMLInputElement).files as FileList)[0]);
       };
 
