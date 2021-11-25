@@ -35,7 +35,6 @@ export class CreateShopComponent implements OnInit {
         telephone: this.createShopForm.get('telephone')?.value
       };
       this.shopService.createShop(newShop).subscribe(success => {
-        console.log(success);
         if (success.id) {
           this.imageUpdateService.uploadShopImage(this.image as File, success.id)
             .subscribe(res => {

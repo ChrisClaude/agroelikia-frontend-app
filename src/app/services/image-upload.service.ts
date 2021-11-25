@@ -13,11 +13,16 @@ export class ImageUploadService {
   constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) { }
 
   uploadShopImage(image: File, shopId: number) {
+    console.log('image', image);
+    console.log('shopId', shopId);
+
     const imageFormData = new FormData();
     imageFormData.append('files', image);
-    imageFormData.append('ref', 'shops');
+    imageFormData.append('ref', 'shop');
     imageFormData.append('refId', shopId.toString());
     imageFormData.append('field', 'images');
+
+    console.log(imageFormData);
 
     return this.http.post(`${environment.apiUrl}/upload`, imageFormData, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
