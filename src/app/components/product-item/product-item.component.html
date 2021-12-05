@@ -1,6 +1,9 @@
-<div *ngIf="product" class="border border-gray-500 border-solid w-72 rounded-3xl p-4 relative">
+<div *ngIf="product" class="product-item-container border border-gray-500 border-solid w-72 rounded-3xl p-4 relative cursor-pointer">
   <div *ngIf="product.images" class="flex justify-center">
     <img src="{{product.images[0].formats.thumbnail.url}}" class="w-44 h-52 object-cover" alt="{{product.name}}">
+    <div class="absolute top-2 right-2 edit-box">
+      <a routerLink="#" mat-raised-button color="accent">Editer</a>
+    </div>
   </div>
   <div class="py-2.5">
     <div class="text-lg font-bold">{{product.name}}</div>

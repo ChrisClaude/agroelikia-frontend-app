@@ -1,0 +1,13 @@
+.product-item-container {
+
+  .edit-box {
+    transition: visibility 500ms, opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover .edit-box {
+    visibility: visible;
+    opacity: 1;
+  }
+}
