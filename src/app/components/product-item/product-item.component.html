@@ -1,0 +1,25 @@
+<div *ngIf="product" class="border border-gray-500 border-solid w-72 rounded-3xl p-4 relative">
+  <div *ngIf="product.images" class="flex justify-center">
+    <img src="{{product.images[0].formats.thumbnail.url}}" class="w-44 h-52 object-cover" alt="{{product.name}}">
+  </div>
+  <div class="py-2.5">
+    <div class="text-lg font-bold">{{product.name}}</div>
+    <div class="flex items-center">
+      <mat-icon class="text-yellow-500">star_rate</mat-icon>
+      <mat-icon class="text-yellow-500">star_rate</mat-icon>
+      <mat-icon class="text-yellow-500">star_rate</mat-icon>
+      <mat-icon class="text-yellow-500">star_rate</mat-icon>
+      <mat-icon class="text-yellow-500">star_half</mat-icon>
+      <span class="ml-1">(85)</span>
+    </div>
+    <div class="flex justify-between mt-4">
+      <div class="flex flex-col">
+        <span class="text-gray-500 text-xs">Prix</span>
+        <span class="font-bold text-base">500 FCFA</span>
+      </div>
+      <button class="border border-gray-500 border-solid rounded-xl px-3 py-1">
+        Ajouter au panier
+      </button>
+    </div>
+  </div>
+</div>

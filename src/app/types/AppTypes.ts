@@ -71,3 +71,12 @@ interface Image {
   updated_at: string
 
 }
+
+interface Product {
+  name: string;
+  description: string;
+  isAvailable: boolean;
+  slug: string;
+  shop: Shop;
+  images?: Image[];
+}
