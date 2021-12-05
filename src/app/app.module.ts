@@ -23,6 +23,7 @@ import {DeleteShopDialogComponent} from '@/components/delete-shop-dialog/delete-
 import {CarouselComponent} from "@/components/carousel/carousel.component";
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ManageShopComponent } from '@/pages/shops/manage/manage-shop.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     DeleteShopDialogComponent,
     ProductItemComponent,
     ProductListComponent,
+    ManageShopComponent,
   ],
   imports: [
     BrowserModule,

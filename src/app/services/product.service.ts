@@ -28,8 +28,8 @@ export class ProductService {
       );
   }
 
-  getUsersProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}/products/me`, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
+  getProductsByShopId(shopId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.apiUrl}/shops/${shopId}/products`, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
         catchError(this.errorService.handleError<Product[]>('getUsersProducts'))
       );

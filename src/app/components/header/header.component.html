@@ -20,9 +20,6 @@
         >
       </li>
       <li class="mr-10">
-        <a routerLink="/shop/list" class="inline-block py-4 px-2 h-full">Ma Boutique</a>
-      </li>
-      <li class="mr-10">
         <a href="#" class="inline-block py-4 px-2 h-full">Conseils & Astuces</a>
       </li>
       <li class="mr-10">
@@ -45,7 +42,7 @@
       <li *ngIf="auth.getUser()">
         <ul class="flex h-full relative">
           <li *ngIf="isShopOwner()" class="flex items-center mr-3">
-            <a mat-raised-button color="primary" routerLink="/shop/create">Gerez votre Boutique</a>
+            <a mat-raised-button color="primary" routerLink="/shop/manage">Gerer ma boutique</a>
           </li>
           <li>
             <div class="w-ful h-full flex items-center justify-center">
