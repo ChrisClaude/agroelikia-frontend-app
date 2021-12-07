@@ -8,8 +8,6 @@ import {SwiperModule} from "swiper/angular";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from "./material/material.module";
-import {HeaderComponent} from './components/header/header.component';
-import {LayoutComponent} from './components/layout/layout.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AuthRedirectComponent} from './components/auth-redirect/auth-redirect.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
@@ -21,17 +19,16 @@ import {ListShopsComponent} from './pages/shops/list-shops/list-shops.component'
 import {EditShopComponent} from './pages/shops/edit-shop/edit-shop.component';
 import {DeleteShopDialogComponent} from '@/components/delete-shop-dialog/delete-shop-dialog.component';
 import {CarouselComponent} from "@/components/carousel/carousel.component";
-import { ProductItemComponent } from './components/product-item/product-item.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ManageShopComponent } from '@/pages/shops/manage/manage-shop.component';
+import {ProductItemComponent} from './components/product-item/product-item.component';
+import {ProductListComponent} from './components/product-list/product-list.component';
+import {ManageShopComponent} from '@/pages/shops/manage/manage-shop.component';
+import {ComponentsModule} from "@/components/components.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     CarouselComponent,
-    LayoutComponent,
     HomeComponent,
     AuthRedirectComponent,
     PageNotFoundComponent,
@@ -55,7 +52,8 @@ import { ManageShopComponent } from '@/pages/shops/manage/manage-shop.component'
     SwiperModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
