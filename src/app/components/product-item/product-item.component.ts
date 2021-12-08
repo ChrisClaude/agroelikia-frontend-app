@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   @Input() product: Product | undefined;
+  @Input() showEditProductButton: boolean = false;
 
   constructor() { }
 
