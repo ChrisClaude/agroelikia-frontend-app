@@ -73,10 +73,11 @@ interface Image {
 }
 
 interface Product {
+  id?: number;
   name: string;
   description: string;
   isAvailable: boolean;
-  slug: string;
-  shop: Shop;
+  slug?: string;
+  shop?: Shop | number;
   images?: Image[];
 }

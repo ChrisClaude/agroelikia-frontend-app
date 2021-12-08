@@ -1,1 +1,54 @@
-<app-layout>create-product works!</app-layout>
+<app-layout>
+  <div>
+    <h2>Enregistrez votre produit</h2>
+
+    <form (ngSubmit)="createProduct()" [formGroup]="createProductForm">
+      <div class="grid grid-cols-2 gap-x-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Nom du produit</mat-label>
+          <input matInput formControlName="name" placeholder="Haricot vert" name="name" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Boutique</mat-label>
+          <mat-select formControlName="shop">
+            <mat-option *ngFor="let shop of shops" [value]="shop.id">
+              {{shop.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Casino est un super marcher" name="description"
+                  type="text" rows="5">
+        </textarea>
+      </mat-form-field>
+
+      <div>
+        <mat-slide-toggle formControlName="isAvailable" color="primary">Disponible</mat-slide-toggle>
+      </div>
+
+      <div class="w-full py-2 my-6">
+        <h3>Ajoutez les images de votre boutique</h3>
+        <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+          <mat-icon class="mr-1">cloud_upload</mat-icon>
+          Choisissez vos fichiers
+        </button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" multiple>
+        <ng-container *ngIf="images">
+          <div *ngFor="let image of images">
+            {{image.name}}
+          </div>
+        </ng-container>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" type="submit">
+          Enregistrez
+        </button>
+      </div>
+    </form>
+  </div>
+</app-layout>
