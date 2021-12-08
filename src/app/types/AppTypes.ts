@@ -74,10 +74,11 @@ interface Image {
 
 interface Product {
   id?: number;
+  slug?: string;
   name: string;
   description: string;
   isAvailable: boolean;
-  slug?: string;
+  price: number;
   shop?: Shop | number;
   images?: Image[];
 }

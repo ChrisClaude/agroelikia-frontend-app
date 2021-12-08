@@ -5,7 +5,7 @@
     <form (ngSubmit)="createProduct()" [formGroup]="createProductForm">
       <div class="grid grid-cols-2 gap-x-4">
         <mat-form-field appearance="fill">
-          <mat-label>Nom du produit</mat-label>
+          <mat-label>Nom de produit</mat-label>
           <input matInput formControlName="name" placeholder="Haricot vert" name="name" type="text">
         </mat-form-field>
 
@@ -19,12 +19,20 @@
         </mat-form-field>
       </div>
 
-      <mat-form-field class="w-full" appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="Casino est un super marcher" name="description"
-                  type="text" rows="5">
+      <div class="grid grid-cols-2 gap-x-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" placeholder="example: 500" name="price" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" placeholder="De l'haricot vert cultivee dans le mayombe" name="description"
+                    type="text" rows="5">
         </textarea>
-      </mat-form-field>
+        </mat-form-field>
+
+      </div>
 
       <div>
         <mat-slide-toggle formControlName="isAvailable" color="primary">Disponible</mat-slide-toggle>

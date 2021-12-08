@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {ShopService} from "@/services/shop.service";
 import {ImageUploadService} from "@/services/image-upload.service";
 import {ProductService} from "@/services/product.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-product',
@@ -15,6 +16,7 @@ export class CreateProductComponent implements OnInit {
   createProductForm = this.fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
+    price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     shop: ['', Validators.required],
     isAvailable: [true, Validators.required],
   });
@@ -23,7 +25,7 @@ export class CreateProductComponent implements OnInit {
 
   shops: Shop[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService, private shopService: ShopService, private imageUpdateService: ImageUploadService) { }
+  constructor(private fb: FormBuilder, private router: Router, private productService: ProductService, private shopService: ShopService, private imageUpdateService: ImageUploadService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.shopService.getUsersShops().subscribe(shops => this.shops = shops);
@@ -34,13 +36,17 @@ export class CreateProductComponent implements OnInit {
       const newProduct: Product = {
         name: this.createProductForm.get('name')?.value,
         description: this.createProductForm.get('description')?.value,
+        price: this.createProductForm.get('price')?.value,
         shop: this.createProductForm.get('shop')?.value,
         isAvailable: this.createProductForm.get('isAvailable')?.value
       };
+
+      this.spinner.show();
       this.productService.createProduct(newProduct).subscribe(product => {
         if (product.id) {
           this.imageUpdateService.uploadProductImage(this.images, product.id)
             .subscribe(res => {
+              this.spinner.hide();
               console.log('upload response', res);
               this.router.navigateByUrl('shop/manage');
             });
