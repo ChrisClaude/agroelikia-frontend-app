@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
@@ -23,6 +23,7 @@ import {ProductItemComponent} from './components/product-item/product-item.compo
 import {ProductListComponent} from './components/product-list/product-list.component';
 import {ManageShopComponent} from '@/pages/shops/manage/manage-shop.component';
 import {ComponentsModule} from "@/components/components.module";
+import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
@@ -53,9 +54,11 @@ import {ComponentsModule} from "@/components/components.module";
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxSpinnerModule,
     ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
