@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://agroelikia-cms-su57q.ondigitalocean.app',
+  apiUrl: 'https://agroelikia-strapi-cms.herokuapp.com',
 };
