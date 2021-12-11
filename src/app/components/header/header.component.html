@@ -1,8 +1,11 @@
-<header class="flex h-14">
-  <div class="flex border-b-3 border-solid border-gray-200 w-2/12 text-2xl font-bold">
-    <a routerLink="/" class="py-4 pr-6 pl-8">Agroelikia</a>
+<header class="flex items-center justify-between overflow-hidden h-14 border-b-3 lg:justify-start lg:border-b-0 lg:items-start">
+  <div class="px-1 flex items-center text-4xl cursor-pointer lg:hidden">
+    <mat-icon [inline]="true" aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
   </div>
-  <nav class="w-10/12 px-10 border-b-3 border-solid border-gray-200 h-full">
+  <div class="flex items-center border-b-0 border-solid border-gray-200 h-14 text-2xl font-bold lg:w-2/12 lg:border-b-3">
+    <a routerLink="/" class="pr-6 pl-8">Agroelikia</a>
+  </div>
+  <nav class="hidden w-10/12 px-10 border-b-3 border-solid border-gray-200 h-full lg:block">
     <ul class="flex h-full relative">
       <li class="mr-10">
         <a
@@ -82,4 +85,7 @@
       </li>
     </ul>
   </nav>
+  <div class="px-2 flex items-center text-2xl cursor-pointer lg:hidden">
+    <mat-icon [inline]="true" aria-hidden="false" aria-label="Example home icon">search</mat-icon>
+  </div>
 </header>

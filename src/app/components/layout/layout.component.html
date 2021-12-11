@@ -2,14 +2,16 @@
 <main class="flex w-full">
   <aside
     class="
+    hidden
       w-2/12
       flex flex-col
       border-r-2 border-solid border-gray-200
+      lg:block
     "
   >
     <div class="pl-8 py-4 border-b-2 border-solid border-gray-200">Filtrer</div>
   </aside>
-  <section class="w-10/12 px-10 py-10">
+  <section class="w-full px-10 py-10 lg:w-10/12">
     <ng-content>
     </ng-content>
   </section>
