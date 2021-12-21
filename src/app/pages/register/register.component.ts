@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { confirmPasswordIdentical } from "../../shared/confirm-password.directive";
 import {Router} from '@angular/router';
 import {AuthService} from "../../auth/services/auth.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-register',
@@ -36,7 +37,7 @@ export class RegisterComponent implements OnInit {
 
   error: any = null;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -49,7 +50,10 @@ export class RegisterComponent implements OnInit {
         email: this.userRegistrationForm.get('email')?.value,
         password: this.userRegistrationForm.get('password')?.value
       };
+
+      this.spinner.show();
       this.authService.registerUser(newUser).subscribe(success => {
+        this.spinner.hide();
         // Reroute to another page
         this.router.navigateByUrl('/');
       });

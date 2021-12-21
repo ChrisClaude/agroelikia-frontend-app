@@ -45,6 +45,11 @@ export class AuthService {
     );
   }
 
+  /**
+   * This method registers the new user. It also stores the the token returned from the backend
+   * onto the client device to log in the user
+   * @param newUser
+   */
   registerUser(newUser: NewUser): Observable<RegisteredUser> {
     return this.http.post<RegisteredUser>(`${environment.apiUrl}/auth/local/register`, newUser).pipe(
       tap({
@@ -82,7 +87,7 @@ export class AuthService {
   /**
    * This method returns true if the login is successful else it returns false.
    *
-   *  @param Params - query paramaters after redirect of successful login
+   * @param queryParams
    **/
   loginWithAuth0(queryParams: Params): Observable<any> {
     return this.loginWithExternalProviders('auth0', queryParams);
