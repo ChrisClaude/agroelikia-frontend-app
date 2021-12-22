@@ -8,6 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from "@angular/material/select";
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 const modules = [
@@ -19,7 +20,8 @@ const modules = [
   MatDialogModule,
   MatIconModule,
   MatSlideToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSidenavModule
 ];
 
 @NgModule({

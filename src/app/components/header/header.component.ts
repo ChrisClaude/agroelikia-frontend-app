@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/services/auth.service';
 import {Router} from '@angular/router';
+import {SidenavService} from "@/services/sidenav.service";
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private router: Router,
+    private sidenavService: SidenavService
   ) {
   }
 
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit {
 
   isShopOwner() {
     return this.user && this.user.role.name.toLowerCase() === "shop owner";
+  }
+
+  toggleSideNav() {
+    this.sidenavService.toggle();
   }
 }

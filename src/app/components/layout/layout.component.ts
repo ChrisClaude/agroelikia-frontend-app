@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {SidenavService} from '@/services/sidenav.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  // @ts-ignore
+  @ViewChild('sidenav') public sidenav: MatSidenav;
+
+  constructor(private sidenavService: SidenavService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.sidenavService.setSidenav(this.sidenav);
   }
 
 }

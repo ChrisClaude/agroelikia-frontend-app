@@ -1,18 +1,29 @@
-<app-header></app-header>
-<main class="flex w-full">
-  <aside
-    class="
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push">
+    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    <p>
+      Agroelikia Sidenav
+    </p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <main class="flex w-full min-h-full">
+      <aside
+        class="
     hidden
       w-2/12
       flex flex-col
       border-r-2 border-solid border-gray-200
       lg:block
     "
-  >
-    <div class="pl-8 py-4 border-b-2 border-solid border-gray-200">Filtrer</div>
-  </aside>
-  <section class="w-full px-10 py-10 lg:w-10/12">
-    <ng-content>
-    </ng-content>
-  </section>
-</main>
+      >
+        <div class="pl-8 py-4 border-b-2 border-solid border-gray-200">Filtrer</div>
+      </aside>
+      <section class="w-full px-10 py-10 lg:w-10/12">
+        <ng-content>
+        </ng-content>
+      </section>
+    </main>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
