@@ -6,8 +6,9 @@ import {HeaderComponent} from "@/components/header/header.component";
 import {MaterialModule} from "../material/material.module";
 import {RouterModule} from '@angular/router';
 import {BrowserModule} from "@angular/platform-browser";
+import {LayoutSidenavComponent} from "@/components/layout-sidenav/layout-sidenav.component";
 
-const components = [LayoutComponent, HeaderComponent];
+const components = [LayoutComponent, HeaderComponent, LayoutSidenavComponent];
 
 @NgModule({
   declarations: components,
