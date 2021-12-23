@@ -1,4 +1,10 @@
 <app-layout>
+  <div *ngIf="!shop" class="h-full flex items-center justify-center">
+    <div class="flex flex-col items-center">
+      <p>Vous n'avez aucune boutique!</p>
+      <a mat-raised-button color="primary" routerLink="/shop/create">Creer une boutique</a>
+    </div>
+  </div>
   <div *ngIf="shop">
     <div class="flex items-center">
       <h1>{{shop.name}}</h1>
