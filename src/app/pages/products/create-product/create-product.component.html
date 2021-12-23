@@ -3,7 +3,7 @@
     <h2>Enregistrez votre produit</h2>
 
     <form (ngSubmit)="createProduct()" [formGroup]="createProductForm">
-      <div class="grid grid-cols-2 gap-x-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4">
         <mat-form-field appearance="fill">
           <mat-label>Nom de produit</mat-label>
           <input matInput formControlName="name" placeholder="Haricot vert" name="name" type="text">
@@ -19,7 +19,7 @@
         </mat-form-field>
       </div>
 
-      <div class="grid grid-cols-2 gap-x-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4">
         <mat-form-field appearance="fill">
           <mat-label>Price</mat-label>
           <input matInput formControlName="price" placeholder="example: 500" name="price" type="number">

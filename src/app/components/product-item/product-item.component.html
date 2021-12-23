@@ -2,7 +2,7 @@
   <div *ngIf="product.images && product.images.length > 0" class="flex justify-center">
     <img src="{{product.images[0].formats.thumbnail.url}}" class="w-44 h-52 object-cover" alt="{{product.name}}">
     <div class="absolute top-2 right-2 edit-box" *ngIf="showEditProductButton">
-      <a routerLink="#" mat-raised-button color="accent">Editer</a>
+      <a routerLink="/products/edit/{{product.id}}" mat-raised-button color="accent">Editer</a>
     </div>
   </div>
   <div class="py-2.5">
