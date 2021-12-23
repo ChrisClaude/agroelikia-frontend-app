@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   user: User | null = null;
 
   constructor(
-    public auth: AuthService,
+    private auth: AuthService,
     private router: Router,
     private sidenavService: SidenavService
   ) {

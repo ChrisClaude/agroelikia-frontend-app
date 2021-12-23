@@ -1,13 +1,6 @@
 <mat-sidenav-container class="min-h-full">
   <mat-sidenav #sidenav mode="push" class="w-2/3">
-    <div class="flex justify-between h-14 items-center bg-primary text-white px-3 py-2">
-      <div class="text-xl">Agroelikia</div>
-      <div class="flex items-center">
-        <mat-icon class="close-menu" [inline]="true" aria-hidden="false" (click)="sidenav.toggle()">close
-        </mat-icon>
-      </div>
-    </div>
-    <app-layout-sidenav></app-layout-sidenav>
+    <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header></app-header>

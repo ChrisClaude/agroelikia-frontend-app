@@ -42,7 +42,7 @@
           <span class="material-icons">favorite_border</span>
         </a>
       </li>
-      <li *ngIf="auth.getUser()">
+      <li *ngIf="user">
         <ul class="flex h-full relative">
           <li *ngIf="isShopOwner()" class="flex items-center mr-3">
             <a mat-raised-button color="primary" routerLink="/shop/manage">Gerer ma boutique</a>
