@@ -23,7 +23,6 @@ export class ManageShopComponent implements OnInit {
         this.productService.getProductsByShopId(this.shop.id as number)
           .subscribe(products => {
             this.products = products;
-            console.log(this.products);
           });
       }
     });

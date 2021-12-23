@@ -36,7 +36,7 @@ export class ShopService {
   }
 
   getShopById(id: number): Observable<Shop> {
-    return this.http.get<Shop>(`${environment.apiUrl}/shops/${id}`)
+    return this.http.get<Shop>(`${environment.apiUrl}/shops/${id}`, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
         catchError(this.errorService.handleError<Shop>('getShopById'))
       );

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ShopService} from "@/services/shop.service";
+import {NgxSpinnerService} from "ngx-spinner";
+import {ImageUploadService} from "@/services/image-upload.service";
 
 @Component({
   selector: 'app-edit-shop',
@@ -19,9 +21,9 @@ export class EditShopComponent implements OnInit {
 
   shopImages: Image [] = [];
 
-  image: any = null;
+  images: File[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router, private shopService: ShopService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private router: Router, private shopService: ShopService, private route: ActivatedRoute,private imageUpdateService: ImageUploadService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -52,9 +54,16 @@ export class EditShopComponent implements OnInit {
         address: this.editShopForm.get('address')?.value,
         telephone: this.editShopForm.get('telephone')?.value
       };
+      this.spinner.show();
       this.shopService.updateShop(editedShop, +id).subscribe(success => {
-        console.log(success);
-        this.router.navigateByUrl('shop/list');
+        if (success.id) {
+          this.imageUpdateService.uploadShopImage(this.images, success.id)
+            .subscribe(res => {
+              this.spinner.hide();
+              console.log('upload response', res);
+              this.router.navigateByUrl('shop/manage');
+            });
+        }
       });
     }
   }
@@ -64,8 +73,7 @@ export class EditShopComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
-        this.image = ((event.target as HTMLInputElement).files as FileList)[0];
-        console.log(((event.target as HTMLInputElement).files as FileList)[0]);
+        Array.from((event.target as HTMLInputElement).files as FileList).forEach(file => this.images.push(file));
       };
 
       reader.readAsDataURL(((event.target as HTMLInputElement).files as FileList)[0]);

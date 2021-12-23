@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ShopService} from '@/services/shop.service';
 import {ImageUploadService} from "@/services/image-upload.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-shop',
@@ -20,7 +21,8 @@ export class CreateShopComponent implements OnInit {
 
   images: File[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router, private shopService: ShopService, private imageUpdateService: ImageUploadService) {
+  constructor(private fb: FormBuilder, private router: Router, private shopService: ShopService,
+              private imageUpdateService: ImageUploadService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -34,12 +36,15 @@ export class CreateShopComponent implements OnInit {
         address: this.createShopForm.get('address')?.value,
         telephone: this.createShopForm.get('telephone')?.value
       };
+
+      this.spinner.show();
       this.shopService.createShop(newShop).subscribe(success => {
         if (success.id) {
           this.imageUpdateService.uploadShopImage(this.images, success.id)
             .subscribe(res => {
+              this.spinner.hide();
               console.log('upload response', res);
-              this.router.navigateByUrl('shop/list');
+              this.router.navigateByUrl('shop/manage');
             });
         }
       });
@@ -52,7 +57,6 @@ export class CreateShopComponent implements OnInit {
 
       reader.onload = (e: any) => {
         Array.from((event.target as HTMLInputElement).files as FileList).forEach(file => this.images.push(file));
-        console.log(((event.target as HTMLInputElement).files as FileList)[0]);
       };
 
       reader.readAsDataURL(((event.target as HTMLInputElement).files as FileList)[0]);

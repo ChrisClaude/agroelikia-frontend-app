@@ -38,9 +38,11 @@
           Choisissez vos fichiers
         </button>
         <input hidden (change)="onFileSelected($event)" #fileInput type="file">
-        <div *ngIf="image">
-          {{image.name}}
-        </div>
+        <ng-container *ngIf="images">
+          <div *ngFor="let image of images">
+            {{image.name}}
+          </div>
+        </ng-container>
       </div>
 
       <div>
