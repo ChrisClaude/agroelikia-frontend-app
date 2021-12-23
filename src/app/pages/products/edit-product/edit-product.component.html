@@ -1,1 +1,72 @@
-<app-layout>edit-product works!</app-layout>
+<app-layout>
+  <div>
+    <h2>Enregistrez votre produit</h2>
+
+    <form (ngSubmit)="updateProduct()" [formGroup]="editProductForm">
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Nom de produit</mat-label>
+          <input matInput formControlName="name" placeholder="Haricot vert" name="name" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Boutique</mat-label>
+          <mat-select formControlName="shop">
+            <mat-option *ngFor="let shop of shops" [value]="shop.id">
+              {{shop.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" placeholder="example: 500" name="price" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" placeholder="De l'haricot vert cultivee dans le mayombe" name="description"
+                    type="text" rows="5">
+        </textarea>
+        </mat-form-field>
+
+      </div>
+
+      <div>
+        <mat-slide-toggle formControlName="isAvailable" color="primary">Disponible</mat-slide-toggle>
+      </div>
+
+      <div class="w-full py-2 my-6">
+        <h3>Editez les images de votre boutique</h3>
+
+        <div class="my-5 w-full" *ngIf="productImages.length > 0">
+          <h2>Les images de la boutiques</h2>
+          <div class="flex justify-between flex-wrap">
+            <div *ngFor="let item of productImages">
+              <img src="{{item.formats.thumbnail.url}}" alt="{{item.name}}">
+            </div>
+          </div>
+        </div>
+
+        <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+          <mat-icon class="mr-1">cloud_upload</mat-icon>
+          Choisissez vos fichiers
+        </button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" multiple>
+        <ng-container *ngIf="images">
+          <div *ngFor="let image of images">
+            {{image.name}}
+          </div>
+        </ng-container>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" type="submit">
+          Enregistrez
+        </button>
+      </div>
+    </form>
+  </div>
+</app-layout>
