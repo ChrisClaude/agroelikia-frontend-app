@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/services/auth.service';
 import {Router} from '@angular/router';
 import {SidenavService} from "@/services/sidenav.service";
+import {CartService} from "@/services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -10,16 +11,19 @@ import {SidenavService} from "@/services/sidenav.service";
 })
 export class HeaderComponent implements OnInit {
   user: User | null = null;
+  cartSize: number = 0;
 
   constructor(
     private auth: AuthService,
     private router: Router,
-    private sidenavService: SidenavService
+    private sidenavService: SidenavService,
+    private cartService: CartService
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.auth.getUser();
+    this.cartSize = this.cartService.cart.length;
   }
 
   login(): void {
