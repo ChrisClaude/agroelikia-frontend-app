@@ -1,13 +1,11 @@
 .product-item-container {
 
   .edit-box {
+    @apply lg:invisible lg:opacity-0;
     transition: visibility 500ms, opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
   }
 
   &:hover .edit-box {
-    visibility: visible;
-    opacity: 1;
+    @apply lg:visible lg:opacity-100;
   }
 }

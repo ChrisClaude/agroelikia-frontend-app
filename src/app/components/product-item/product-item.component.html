@@ -2,7 +2,12 @@
   <div *ngIf="product.images && product.images.length > 0" class="flex justify-center">
     <img src="{{product.images[0].formats.thumbnail.url}}" class="w-44 h-52 object-cover" alt="{{product.name}}">
     <div class="absolute top-2 right-2 edit-box" *ngIf="showEditProductButton">
-      <a routerLink="/products/edit/{{product.id}}" mat-raised-button color="accent">Editer</a>
+      <a routerLink="/products/edit/{{product.id}}" class="lg:hidden">
+        <mat-icon [inline]="true" class="text-2xl text-gray-600">edit</mat-icon>
+      </a>
+      <p class="hidden lg:block">
+        <a routerLink="/products/edit/{{product.id}}" mat-raised-button color="accent">Editer</a>
+      </p>
     </div>
   </div>
   <div class="py-2.5">
@@ -20,7 +25,7 @@
         <span class="text-gray-500 text-xs">Prix</span>
         <span class="font-bold text-base">{{product.price}} FCFA</span>
       </div>
-      <button class="border border-gray-500 border-solid rounded-xl px-3 py-1">
+      <button class="border border-gray-500 border-solid bg-primary text-white rounded-xl px-3 py-1">
         Ajouter au panier
       </button>
     </div>
