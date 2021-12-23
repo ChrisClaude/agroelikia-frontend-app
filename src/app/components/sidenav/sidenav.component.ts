@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
 import {SidenavService} from "@/services/sidenav.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
@@ -11,14 +12,22 @@ export class SidenavComponent implements OnInit {
 
   user: User | null = null;
 
-  constructor(private authService: AuthService, private sidenavService: SidenavService) { }
+  constructor(private authService: AuthService, private router: Router, private sidenavService: SidenavService) { }
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
   }
 
-  public toggleSideNav () {
+  toggleSideNav () {
     this.sidenavService.toggle();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 
 }

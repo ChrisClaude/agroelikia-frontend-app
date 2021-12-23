@@ -3,8 +3,8 @@
     <span *ngIf="!user">Agroelikia</span>
     <span
       *ngIf="user"
-      class="h-11 w-11 flex items-center justify-center border border-white border-solid rounded-full p-4 cursor-pointer"
-    >{{user && user.username}}</span>
+      class="h-11 w-11 flex items-center justify-center border border-white border-solid rounded-full p-4 cursor-pointer overflow-hidden"
+    >{{user && user.username[0].toUpperCase()}}</span>
   </div>
   <div class="flex items-center">
     <mat-icon class="close-menu" [inline]="true" aria-hidden="false" (click)="toggleSideNav()">close
@@ -37,17 +37,17 @@
         <mat-icon class="text-gray-400">arrow_forward</mat-icon>
       </a>
     </li>
-    <li >
-      <a routerLink="/" class="w-full py-6 border-b-2 border-solid border-gray-400 flex justify-between items-center">
+    <li *ngIf="!user">
+      <a routerLink="/login" class="w-full py-6 border-b-2 border-solid border-gray-400 flex justify-between items-center">
         <span>Se connecter</span>
         <mat-icon class="text-gray-400">arrow_forward</mat-icon>
       </a>
     </li>
     <li *ngIf="user">
-      <a routerLink="/" class="w-full py-6 border-b-2 border-solid border-gray-400 flex justify-between items-center">
+      <button class="w-full py-6 border-b-2 border-solid border-gray-400 flex justify-between items-center" (click)="logout()">
         <span>Se deconnecter</span>
         <mat-icon class="text-gray-400">arrow_forward</mat-icon>
-      </a>
+      </button>
     </li>
   </ul>
 </nav>
