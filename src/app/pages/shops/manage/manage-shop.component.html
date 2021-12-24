@@ -26,7 +26,7 @@
       <div *ngIf="!products || products.length < 1">
         <p>Vous n'avez pas encore ajoute vos produits</p>
       </div>
-      <div class="grid grid-cols-3 gap-x-4 gap-y-6" *ngIf="products && products.length > 0">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-6" *ngIf="products && products.length > 0">
         <app-product-item *ngFor="let product of products" [product]="product" [showEditProductButton]="true"></app-product-item>
       </div>
     </section>

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://agroelikia-strapi-cms.herokuapp.com',
+  apiUrl: 'https://peaceful-ravine-69370.herokuapp.com/',
 };
