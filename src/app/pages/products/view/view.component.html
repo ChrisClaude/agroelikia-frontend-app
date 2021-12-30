@@ -1,0 +1,39 @@
+<app-layout>
+  <div *ngIf="product !== null">
+    <div *ngIf="product.images && product.images.length > 0" class="flex justify-center">
+      <img src="{{product.images[0].formats.medium.url}}" class="w-full h-80 object-cover lg:w-44"
+           alt="{{product.name}}">
+    </div>
+    <div class="py-2.5 px-4">
+      <div class="flex justify-between">
+        <div>
+          <p class="text-lg font-bold">{{product.name}}</p>
+          <div class="flex items-center">
+            <mat-icon class="text-yellow-500">star_rate</mat-icon>
+            <mat-icon class="text-yellow-500">star_rate</mat-icon>
+            <mat-icon class="text-yellow-500">star_rate</mat-icon>
+            <mat-icon class="text-yellow-500">star_rate</mat-icon>
+            <mat-icon class="text-yellow-500">star_half</mat-icon>
+            <span class="ml-1">(85)</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-gray-500 text-xs">Prix</span>
+          <span class="font-bold text-base">{{product.price}} FCFA</span>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div *ngIf="shop !== null">
+          <p>Boutique: <b>{{shop.name}}</b></p>
+          <p>Boutique: <b>{{shop.address}}</b></p>
+          <p>Telephone: <b>{{shop.telephone}}</b></p>
+        </div>
+
+        <button mat-raised-button color="primary" class="w-full" (click)="addToCart()">
+          Ajouter au panier
+        </button>
+      </div>
+    </div>
+  </div>
+</app-layout>
