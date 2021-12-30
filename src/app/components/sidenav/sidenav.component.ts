@@ -22,6 +22,10 @@ export class SidenavComponent implements OnInit {
     this.sidenavService.toggle();
   }
 
+  isShopOwner() {
+    return this.authService.isShopOwner();
+  };
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/'])

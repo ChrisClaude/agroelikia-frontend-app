@@ -65,6 +65,11 @@ export class AuthService {
     );
   }
 
+  isShopOwner(): boolean {
+    const user = this.getUser();
+    return !!user && user.role.name.toLowerCase() === "shop owner";
+  }
+
   private loginWithExternalProviders(
     providerName: string,
     queryParams: Params
