@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isShopOwner() {
-    return this.user && this.user.role.name.toLowerCase() === "shop owner";
+    return this.auth.isShopOwner();
   }
 
   toggleSideNav() {
