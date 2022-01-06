@@ -87,9 +87,9 @@
   </nav>
   <div class="pr-1 pt-1 flex items-center text-2xl cursor-pointer lg:hidden">
     <mat-icon [inline]="true" aria-hidden="false" aria-label="search icon" class="mr-2">search</mat-icon>
-    <mat-icon [inline]="true" [matBadge]="cartSize" matBadgeColor="accent" matBadgeSize="small" aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+    <mat-icon [inline]="true" [matBadge]="this.cartService.cart.length" matBadgeColor="accent" matBadgeSize="small" aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
   </div>
 </header>
-<div class="p-3 bg-gray-300">
-  <p><span class="text-base mr-1">Besoin d'aide? Appellez:</span> <mat-icon [inline]="true" class="relative top-2 text-2xl">call</mat-icon> <span class="font-semibold ml-1">O6 401 37 03</span></p>
+<div class="py-1 px-3 bg-gray-300">
+  <p class="text-center"><span class="text-base mr-1">Besoin d'aide? Appellez:</span> <mat-icon [inline]="true" class="relative top-2 text-2xl">call</mat-icon> <span class="font-semibold ml-1">O6 401 37 03</span></p>
 </div>

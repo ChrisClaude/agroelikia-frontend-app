@@ -11,19 +11,17 @@ import {CartService} from "@/services/cart.service";
 })
 export class HeaderComponent implements OnInit {
   user: User | null = null;
-  cartSize: number = 0;
 
   constructor(
     private auth: AuthService,
     private router: Router,
     private sidenavService: SidenavService,
-    private cartService: CartService
+    public cartService: CartService
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.auth.getUser();
-    this.cartSize = this.cartService.cart.length;
   }
 
   login(): void {

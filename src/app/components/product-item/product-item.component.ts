@@ -1,3 +1,5 @@
+import { CartService } from '@/services/cart.service';
+import { SnackbarService } from '@/services/snackbar.service';
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
@@ -7,16 +9,21 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() product: Product | undefined;
+  // @ts-ignore
+  @Input() product: Product;
   @Input() showEditProductButton: boolean = false;
 
-  constructor() { }
+  constructor(private cartService: CartService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
   }
 
   addToCart(event: MouseEvent) {
     event.stopPropagation();
-    console.log("event occurred")
+    const result = this.cartService.addProductToCart(this.product);
+
+    if (result) {
+      this.snackbarService.showSnackbar(`${this.product.name} ajoute au panier`, 'OK');
+    }
   }
 }
