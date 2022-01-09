@@ -18,12 +18,12 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToCart(event: MouseEvent) {
+  addToCart(event: any) {
     event.stopPropagation();
     const result = this.cartService.addProductToCart(this.product);
 
     if (result) {
-      this.snackbarService.showSnackbar(`${this.product.name} ajoute au panier`, 'OK');
+      this.snackbarService.showSnackbar(`${this.product.name} a été ajouté au panier`, 'OK');
     }
   }
 }

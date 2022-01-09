@@ -25,7 +25,7 @@
         <span class="text-gray-500 text-xs">Prix</span>
         <span class="font-bold text-base">{{product.price}} FCFA</span>
       </div>
-      <button class="border border-gray-500 border-solid bg-primary text-white rounded-xl px-3 py-1" (click)="addToCart($event)">
+      <button click-stop-propagation class="border border-gray-500 border-solid bg-primary text-white rounded-xl px-3 py-1 z-10" (click)="$event.stopPropagation(); addToCart($event)">
         Ajouter au panier
       </button>
     </div>

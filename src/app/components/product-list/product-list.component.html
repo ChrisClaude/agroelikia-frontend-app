@@ -1,14 +1,14 @@
-
 <ng-container>
   <section class="grid grid-cols-2 gap-x-3 gap-y-6 py-10 px-4 lg:px-10" *ngIf="!isProductsLoading">
-    <ng-container>
-      <h1 *ngIf="!isProductsLoading" class="col-span-2 mb-0">Explorez nos produits</h1>
-      <a *ngFor="let product of products" routerLink="/products/view/{{product.id}}">
-        <app-product-item [product]="product"></app-product-item>
+    <h1 *ngIf="!isProductsLoading" class="col-span-2 mb-0">Explorez nos produits</h1>
+    <ng-container *ngFor="let product of products">
+      <a routerLink="/products/view/{{product.id}}">
+        <app-product-item click-stop-propagation [product]="product"></app-product-item>
       </a>
     </ng-container>
   </section>
 
+  <!--    The following is the product loader, it shows up when products are being requested.-->
   <section class="py-10 grid-cols-1 gap-x-3 gap-y-6 px-4 lg:px-10" *ngIf="isProductsLoading">
     <div *ngFor="let i of placeholderArray" class="w-72">
       <div class="ph-item">
@@ -28,5 +28,4 @@
       </div>
     </div>
   </section>
-  <!--    The following is the product loader, it shows up when products are being requested.-->
 </ng-container>

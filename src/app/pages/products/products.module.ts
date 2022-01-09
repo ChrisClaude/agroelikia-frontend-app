@@ -18,11 +18,11 @@ import { ViewComponent } from './view/view.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule,
     FormsModule,
     MaterialModule,
     ProductsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule
   ]
 })
 export class ProductsModule {
