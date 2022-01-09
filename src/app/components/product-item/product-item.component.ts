@@ -1,6 +1,7 @@
 import { CartService } from '@/services/cart.service';
 import { SnackbarService } from '@/services/snackbar.service';
 import {Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -13,17 +14,20 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   @Input() showEditProductButton: boolean = false;
 
-  constructor(private cartService: CartService, private snackbarService: SnackbarService) { }
+  constructor(private cartService: CartService, private snackbarService: SnackbarService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  addToCart(event: any) {
-    event.stopPropagation();
+  addToCart() {
     const result = this.cartService.addProductToCart(this.product);
 
     if (result) {
       this.snackbarService.showSnackbar(`${this.product.name} a été ajouté au panier`, 'OK');
     }
+  }
+
+  navigateToProduct() {
+    this.router.navigate(['/products/view', this.product.id]);
   }
 }

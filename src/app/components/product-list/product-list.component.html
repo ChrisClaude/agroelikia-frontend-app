@@ -2,9 +2,7 @@
   <section class="grid grid-cols-2 gap-x-3 gap-y-6 py-10 px-4 lg:px-10" *ngIf="!isProductsLoading">
     <h1 *ngIf="!isProductsLoading" class="col-span-2 mb-0">Explorez nos produits</h1>
     <ng-container *ngFor="let product of products">
-      <a routerLink="/products/view/{{product.id}}">
-        <app-product-item click-stop-propagation [product]="product"></app-product-item>
-      </a>
+      <app-product-item click-stop-propagation [product]="product"></app-product-item>
     </ng-container>
   </section>
 
