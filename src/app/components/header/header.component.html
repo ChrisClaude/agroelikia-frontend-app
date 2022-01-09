@@ -86,11 +86,16 @@
       </li>
     </ul>
   </nav>
-  <div class="pr-1 pt-1 flex items-center text-2xl cursor-pointer lg:hidden">
-    <mat-icon [inline]="true" aria-hidden="false" aria-label="search icon" class="mr-2">search</mat-icon>
-    <mat-icon [inline]="true" [matBadge]="this.cartService.cart.length" matBadgeColor="accent" matBadgeSize="small"
-              aria-hidden="false" aria-label="shopping cart icon">shopping_cart
-    </mat-icon>
+  <div class="pr-1 flex items-center lg:hidden">
+    <button mat-icon-button class="text-2xl" aria-label="search icon">
+      <mat-icon [inline]="true" aria-hidden="false" aria-label="search icon">search
+      </mat-icon>
+    </button>
+    <button mat-icon-button class="text-2xl" aria-label="shopping cart icon" (click)="navigateToCart()">
+      <mat-icon [inline]="true" [matBadge]="this.cartService.cart.length" matBadgeColor="accent" matBadgeSize="small"
+                aria-hidden="false" aria-label="shopping cart icon">shopping_cart
+      </mat-icon>
+    </button>
   </div>
 </header>
 <div class="py-1 px-3 bg-gray-300">

@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'shop/edit/:id', component: EditShopComponent, canActivate: [AuthenticationGuard]},
   {path: 'shop/list', component: ListShopsComponent, canActivate: [AuthenticationGuard]},
   {path: 'products', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)},
+  { path: 'cart', loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule) },
   {path: '**', component: PageNotFoundComponent},
 ];
 

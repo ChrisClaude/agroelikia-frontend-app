@@ -43,4 +43,8 @@ export class HeaderComponent implements OnInit {
   toggleSideNav() {
     this.sidenavService.toggle();
   }
+
+  navigateToCart() {
+    this.router.navigate(['/cart'])
+  }
 }
