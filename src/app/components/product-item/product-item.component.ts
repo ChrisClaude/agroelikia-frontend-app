@@ -20,7 +20,11 @@ export class ProductItemComponent implements OnInit {
   }
 
   addToCart() {
-    const result = this.cartService.addProductToCart(this.product);
+    const cartItem: CartItem = {
+      product: this.product,
+      quantity: 1
+    };
+    const result = this.cartService.addProductToCart(cartItem);
 
     if (result) {
       this.snackbarService.showSnackbar(`${this.product.name} a été ajouté au panier`, 'OK', 2000);

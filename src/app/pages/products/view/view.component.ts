@@ -29,10 +29,14 @@ export class ViewComponent implements OnInit {
   }
 
   addToCart() {
-    const result = this.cartService.addProductToCart(this.product as Product);
+    const cartItem: CartItem = {
+      product: this.product as Product,
+      quantity: 1
+    };
+    const result = this.cartService.addProductToCart(cartItem);
 
     if (result) {
-      this.snackbarService.showSnackbar(`${(this.product as Product).name} ajoute au panier`, 'OK');
+      this.snackbarService.showSnackbar(`${(this.product as Product).name} ajouté au panier`, 'OK');
     }
   }
 }

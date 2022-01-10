@@ -4,17 +4,17 @@
   </mat-sidenav>
   <mat-sidenav-content class="min-h-screen flex flex-col">
     <app-header></app-header>
-    <main class="flex w-full flex-grow">
+    <div class="flex w-full flex-grow">
       <aside
         class="hidden w-2/12 flex flex-col border-r-2 border-solid border-gray-200 lg:block"
       >
         <div class="pl-8 py-4 border-b-2 border-solid border-gray-200">Filtrer</div>
       </aside>
-      <section class="w-full lg:px-10 lg:w-10/12">
+      <main class="w-full lg:px-10 lg:w-10/12">
         <ng-content>
         </ng-content>
-      </section>
-    </main>
+      </main>
+    </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

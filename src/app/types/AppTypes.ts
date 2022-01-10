@@ -82,3 +82,8 @@ interface Product {
   shop?: Shop | number;
   images?: Image[];
 }
+
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
