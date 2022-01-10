@@ -23,7 +23,9 @@ export class ProductItemComponent implements OnInit {
     const result = this.cartService.addProductToCart(this.product);
 
     if (result) {
-      this.snackbarService.showSnackbar(`${this.product.name} a été ajouté au panier`, 'OK');
+      this.snackbarService.showSnackbar(`${this.product.name} a été ajouté au panier`, 'OK', 2000);
+    } else {
+      this.snackbarService.showSnackbar(`${this.product.name} est déjà dans le panier`, 'OK', 2000);
     }
   }
 
