@@ -23,6 +23,10 @@ export class AuthService {
     return token ? token : null;
   }
 
+  isAuthenticated(): boolean {
+    return this.getToken() !== null;
+  }
+
   logout () {
     console.log("log out");
     localStorage.removeItem("token");
