@@ -4,20 +4,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {LoginComponent} from "@/pages/login/login.component";
 import {RegisterComponent} from "@/pages/register/register.component";
-import {CreateShopComponent} from "@/pages/shops/create-shop/create-shop.component";
-import {ListShopsComponent} from "@/pages/shops/list-shops/list-shops.component";
-import {EditShopComponent} from './pages/shops/edit-shop/edit-shop.component';
-import {AuthenticationGuard} from "./auth/guards/authentication.guard";
-import {ManageShopComponent} from "@/pages/shops/manage/manage-shop.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'shop/manage', component: ManageShopComponent, canActivate: [AuthenticationGuard]},
-  {path: 'shop/create', component: CreateShopComponent, canActivate: [AuthenticationGuard]},
-  {path: 'shop/edit/:id', component: EditShopComponent, canActivate: [AuthenticationGuard]},
-  {path: 'shop/list', component: ListShopsComponent, canActivate: [AuthenticationGuard]},
+  {path: 'shops', loadChildren: () => import('./pages/shops/shops.module').then(m => m.ShopsModule)},
   {path: 'products', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)},
   { path: 'cart', loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule) },
   {path: '**', component: PageNotFoundComponent},

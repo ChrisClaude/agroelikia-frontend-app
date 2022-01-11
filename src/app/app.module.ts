@@ -14,10 +14,6 @@ import {PageNotFoundComponent} from "@/pages/page-not-found/page-not-found.compo
 import {HomeComponent} from "@/pages/home/home.component";
 import {AuthRedirectComponent} from "@/components/auth-redirect/auth-redirect.component";
 import {RegisterComponent} from "@/pages/register/register.component";
-import {CreateShopComponent} from "@/pages/shops/create-shop/create-shop.component";
-import {ListShopsComponent} from "@/pages/shops/list-shops/list-shops.component";
-import {EditShopComponent} from "@/pages/shops/edit-shop/edit-shop.component";
-import {ManageShopComponent} from "@/pages/shops/manage/manage-shop.component";
 
 
 @NgModule({
@@ -28,10 +24,6 @@ import {ManageShopComponent} from "@/pages/shops/manage/manage-shop.component";
     HomeComponent,
     AuthRedirectComponent,
     RegisterComponent,
-    CreateShopComponent,
-    ListShopsComponent,
-    EditShopComponent,
-    ManageShopComponent,
   ],
   imports: [
     BrowserModule,

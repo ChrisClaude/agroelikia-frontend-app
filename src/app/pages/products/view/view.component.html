@@ -25,12 +25,12 @@
 
       <div class="mt-4">
         <div *ngIf="shop !== null">
-          <p>Boutique: <b>{{shop.name}}</b></p>
-          <p>Boutique: <b>{{shop.address}}</b></p>
-          <p>Telephone: <b>{{shop.telephone}}</b></p>
+          <p>Boutique: <a class="text-blue-600" routerLink="/shops/view/{{shop.id}}"><b>{{shop.name}}</b></a></p>
+          <p class="mt-1">Boutique: <b>{{shop.address}}</b></p>
+          <p class="mt-1">Telephone: <b>{{shop.telephone}}</b></p>
         </div>
 
-        <button mat-raised-button color="primary" class="w-full" (click)="addToCart()">
+        <button mat-raised-button color="primary" class="w-full mt-2" (click)="addToCart()">
           Ajouter au panier
         </button>
       </div>
