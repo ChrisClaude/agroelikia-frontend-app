@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { confirmPasswordIdentical } from "../../shared/confirm-password.directive";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {confirmPasswordIdentical} from "../../shared/confirm-password.directive";
 import {Router} from '@angular/router';
 import {AuthService} from "../../auth/services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+      Validators.pattern(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i)
     ]),
     password: new FormControl('', [
       Validators.required,
@@ -33,6 +33,9 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(8),
       Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
     ]),
+    isASeller: new FormControl('',
+      Validators.required,
+    ),
   }, {validators: confirmPasswordIdentical});
 
   error: any = null;
@@ -51,17 +54,15 @@ export class RegisterComponent implements OnInit {
         password: this.userRegistrationForm.get('password')?.value
       };
 
+      const isASeller = this.userRegistrationForm.get('isASeller')?.value;
+
       this.spinner.show();
-      this.authService.registerUser(newUser).subscribe(success => {
+      this.authService.registerUser(newUser, isASeller).subscribe(success => {
         this.spinner.hide();
         // Reroute to another page
         this.router.navigateByUrl('/');
       });
 
-      // this.userRegistrationForm.get('username')?.patchValue("");
-      // this.userRegistrationForm.get('email')?.patchValue("");
-      // this.userRegistrationForm.get('password')?.patchValue("");
-      // this.userRegistrationForm.get('confirmPassword')?.patchValue("");
     } else {
       this.error = "Invalid form";
     }

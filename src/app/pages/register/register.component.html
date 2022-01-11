@@ -29,14 +29,18 @@
           </mat-form-field>
         </p>
 
+        <p class="w-full min-w-80 mt-2">
+          <mat-checkbox formControlName="isASeller" color="primary">Je suis un proprietaire de boutique</mat-checkbox>
+        </p>
+
         <p *ngIf="error" class="text-white bg-red-500 p-1 w-80">
           {{ error }}
         </p>
 
-        <p class="flex justify-end">
-          <button mat-raised-button color="accent" type="submit">Enregistrez-vous</button>
+        <p class="flex justify-end mt-4">
+          <button mat-raised-button color="primary" type="submit">Enregistrez-vous</button>
           <span class="w-3"></span>
-          <a routerLink="/login" mat-raised-button>Connectez-vous</a>
+          <a mat-raised-button color="accent" routerLink="/login">Connectez-vous</a>
         </p>
       </form>
     </mat-card-content>

@@ -53,8 +53,9 @@ export class AuthService {
    * This method registers the new user. It also stores the the token returned from the backend
    * onto the client device to log in the user
    * @param newUser
+   * @param isASeller: boolean - this is a flag to confirm if the user is a seller or not
    */
-  registerUser(newUser: NewUser): Observable<RegisteredUser> {
+  registerUser(newUser: NewUser, isASeller?: boolean): Observable<RegisteredUser> {
     return this.http.post<RegisteredUser>(`${environment.apiUrl}/auth/local/register`, newUser).pipe(
       tap({
         next: data => {
