@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {confirmPasswordIdentical} from "../../shared/confirm-password.directive";
-import {Router} from '@angular/router';
-import {AuthService} from "../../auth/services/auth.service";
-import {NgxSpinnerService} from "ngx-spinner";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { confirmPasswordIdentical } from "../../shared/confirm-password.directive";
+import { Router } from "@angular/router";
+import { AuthService } from "../../auth/services/auth.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-register',

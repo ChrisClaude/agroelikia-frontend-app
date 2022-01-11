@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {ErrorService} from "@/services/error.service";
-import {AuthService} from "../auth/services/auth.service";
-import {Observable} from "rxjs";
-import {environment} from "@/environments/environment";
-import {catchError} from "rxjs/operators";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ErrorService } from "@/services/error.service";
+import { AuthService } from "@/auth/services/auth.service";
+import { Observable } from "rxjs";
+import { environment } from "@/environments/environment";
+import { catchError } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProductService {
 
-  constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) { }
+  constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
+  }
 
   createProduct(product: Product): Observable<Product> {
-    console.log('post', product);
+    console.log("post", product);
     return this.http.post<Product>(`${environment.apiUrl}/products`, product, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
         catchError(this.errorService.handleError<Product>('createProduct', product))

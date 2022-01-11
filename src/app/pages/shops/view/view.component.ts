@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {ShopService} from "@/services/shop.service";
-import {ProductService} from "@/services/product.service";
+import { Component, OnInit } from "@angular/core";
+import { ShopService } from "@/services/shop.service";
+import { ProductService } from "@/services/product.service";
 
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss']
+  selector: "app-view",
+  templateUrl: "./view.component.html",
+  styleUrls: ["./view.component.scss"]
 })
 export class ViewComponent implements OnInit {
 

@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "@/environments/environment";
-import {catchError} from "rxjs/operators";
-import {ErrorService} from "@/services/error.service";
-import {Observable} from "rxjs";
-import {AuthService} from "../auth/services/auth.service";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "@/environments/environment";
+import { catchError } from "rxjs/operators";
+import { ErrorService } from "@/services/error.service";
+import { Observable } from "rxjs";
+import { AuthService } from "@/auth/services/auth.service";
 
 @Injectable({
   providedIn: 'root'
