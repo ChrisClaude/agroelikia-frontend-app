@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'shops', loadChildren: () => import('./pages/shops/shops.module').then(m => m.ShopsModule)},
   {path: 'products', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)},
   { path: 'cart', loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule) },
+  { path: 'contacts', loadChildren: () => import('./pages/contacts/contacts.module').then(m => m.ContactsModule) },
   {path: '**', component: PageNotFoundComponent},
 ];
 
