@@ -11,7 +11,7 @@ import { ErrorService } from "@/services/error.service";
 export class CartService {
 
   //@ts-ignore
-  private _cart: CartItem[];
+  private _cart: CartItem[] = [];
   //@ts-ignore
   private _totalCost: number;
   private LOCAL_STORAGE_CART_KEY = 'cart';
@@ -26,9 +26,11 @@ export class CartService {
         : this._cart = [];
       // initialize total cost
       this._totalCost = 0;
-      this._cart.forEach(item => {
-        this._totalCost += item.product.price * item.quantity;
-      });
+      if (this._cart.length > 0) {
+        this._cart.forEach(item => {
+          this._totalCost += item.product.price * item.quantity;
+        });
+      }
     }
   }
 
@@ -36,12 +38,14 @@ export class CartService {
     this.http.get<CartItem[]>(`${environment.apiUrl}/carts/me`, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(catchError(this.errorService.handleError<CartItem[]>('getCartItems')))
       .subscribe(cart => {
-        this._cart = cart;
-        this._totalCost = 0;
-        this._cart.forEach(item => {
-          this._totalCost += item.product.price * item.quantity;
-        });
-        localStorage.setItem(this.LOCAL_STORAGE_CART_KEY, JSON.stringify(this._cart));
+        if (cart !== undefined) {
+          this._cart = cart;
+          this._totalCost = 0;
+          this._cart.forEach(item => {
+            this._totalCost += item.product.price * item.quantity;
+          });
+          localStorage.setItem(this.LOCAL_STORAGE_CART_KEY, JSON.stringify(this._cart));
+        }
       });
   }
 

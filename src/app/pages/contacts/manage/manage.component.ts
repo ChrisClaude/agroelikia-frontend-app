@@ -12,14 +12,16 @@ import { Observable, of } from "rxjs";
 })
 export class ManageComponent implements OnInit {
 
-  contacts$: Observable<Contact[]> = of([]);
+  contacts: Contact[] = [];
 
   constructor(private router: Router, private contactService: ContactService, public dialog: MatDialog) { }
 
   displayedColumns: string[] = ['name', 'organization', 'typeOfActivity', 'productDescription', 'address', 'telephone', 'email', 'action'];
 
   ngOnInit(): void {
-    this.contacts$ = this.contactService.getUsersContacts();
+    this.contactService.getUsersContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    });
   }
 
   onEdit(contact: Contact) {
@@ -35,7 +37,9 @@ export class ManageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result && contact.id !== undefined) {
         this.contactService.deleteContact(contact.id).subscribe(success => {
-          this.contacts$ = this.contactService.getUsersContacts();
+          this.contactService.getUsersContacts().subscribe(contacts => {
+            this.contacts = contacts;
+          });
         });
       }
     });
