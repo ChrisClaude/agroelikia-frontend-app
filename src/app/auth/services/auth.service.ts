@@ -28,13 +28,11 @@ export class AuthService {
   }
 
   logout () {
-    console.log("log out");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
   }
 
   login(user: {identifier: string, password: string}): Observable<any> {
-    console.log(user);
     return this.http.post<{jwt: string, user: {id: number, username: string, email: string}}>(`${environment.apiUrl}/auth/local`, user).pipe(
       tap({
         next: data => {

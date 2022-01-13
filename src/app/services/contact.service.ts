@@ -14,7 +14,6 @@ export class ContactService {
   constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) { }
 
   createContact(contact: Contact): Observable<Contact> {
-    console.log('post', contact);
     return this.http.post<Contact>(`${environment.apiUrl}/contacts`, contact, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
         catchError(this.errorService.handleError<Contact>('createContact', contact))

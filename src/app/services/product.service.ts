@@ -15,7 +15,6 @@ export class ProductService {
   }
 
   createProduct(product: Product): Observable<Product> {
-    console.log("post", product);
     return this.http.post<Product>(`${environment.apiUrl}/products`, product, {headers: {Authorization: `bearer ${this.authService.getToken()}`}})
       .pipe(
         catchError(this.errorService.handleError<Product>('createProduct', product))

@@ -21,7 +21,6 @@ export class ViewComponent implements OnInit {
     const id = +(this.route.snapshot.paramMap.get('id') as string);
     this.spinner.show();
     this.productService.getProductById(id).subscribe(product => {
-      console.log(product);
       this.spinner.hide();
       this.product = product;
       this.shop = product.shop as Shop;

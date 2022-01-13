@@ -47,7 +47,6 @@ export class CreateProductComponent implements OnInit {
           this.imageUpdateService.uploadProductImage(this.images, product.id)
             .subscribe(res => {
               this.spinner.hide();
-              console.log('upload response', res);
               this.router.navigateByUrl('shops/manage');
             });
         }

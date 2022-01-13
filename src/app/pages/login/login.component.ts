@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       this.authService.login({identifier: this.userLoginForm.get('email')?.value, password: this.userLoginForm.get('password')?.value})
         .subscribe(success => {
           this.spinner.hide();
-          console.log('login successful');
           this.router.navigateByUrl('/');
         });
     }
