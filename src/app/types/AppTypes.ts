@@ -1,8 +1,8 @@
 interface User {
   id: number;
   username: string;
-
   email: string;
+  hasAppliedForShopOwnership: boolean;
   provider: string;
   confirmed: boolean;
   blocked: null | boolean | string;

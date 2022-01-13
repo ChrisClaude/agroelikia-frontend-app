@@ -65,7 +65,7 @@ export class EditProductComponent implements OnInit {
             .subscribe(res => {
               this.spinner.hide();
               console.log('upload response', res);
-              this.router.navigateByUrl('shop/manage');
+              this.router.navigateByUrl('shops/manage');
             });
         }
       });

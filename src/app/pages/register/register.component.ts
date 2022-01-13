@@ -51,13 +51,12 @@ export class RegisterComponent implements OnInit {
       const newUser = {
         username: this.userRegistrationForm.get('username')?.value,
         email: this.userRegistrationForm.get('email')?.value,
-        password: this.userRegistrationForm.get('password')?.value
+        password: this.userRegistrationForm.get('password')?.value,
+        hasAppliedForShopOwnership: this.userRegistrationForm.get('isASeller')?.value,
       };
 
-      const isASeller = this.userRegistrationForm.get('isASeller')?.value;
-
       this.spinner.show();
-      this.authService.registerUser(newUser, isASeller).subscribe(success => {
+      this.authService.registerUser(newUser).subscribe(success => {
         this.spinner.hide();
         // Reroute to another page
         this.router.navigateByUrl('/');
