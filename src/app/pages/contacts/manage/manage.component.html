@@ -9,6 +9,14 @@
         </span>
       </mat-list-item>
     </mat-list>
+    <div *ngIf="(!contacts.length > 0)">
+      <div>
+        <p>Vous n'avez aucun contact!</p>
+        <p>
+          <a mat-raised-button color="primary" routerLink="/contacts/create">Ajoutez un contact</a>
+        </p>
+      </div>
+    </div>
   </section>
   <app-float-action-button>
     <a routerLink="/contacts/create" class="h-full w-full flex items-center justify-center">
