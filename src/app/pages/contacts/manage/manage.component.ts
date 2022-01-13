@@ -46,4 +46,7 @@ export class ManageComponent implements OnInit {
     });
   }
 
+  navigateToContact(contact: Contact) {
+    this.router.navigate(['contacts/view', contact.id]);
+  }
 }

@@ -27,8 +27,8 @@ module.exports = {
         '3/4': '75%',
         'full': '100%',
       },
-      gridTemplateColumns: {
-
+      boxShadow: {
+        'float-button': '0 1px 3px 0 rgb(60 64 67 / 30%), 0 4px 8px 3px rgb(60 64 67 / 15%)',
       }
     },
   },

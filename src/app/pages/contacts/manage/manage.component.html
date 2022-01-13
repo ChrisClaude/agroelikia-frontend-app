@@ -2,7 +2,7 @@
   <section class="py-10 px-4 lg:px-10">
     <h2>Manage your contacts</h2>
     <mat-list *ngIf="contacts.length > 0">
-      <mat-list-item *ngFor="let contact of contacts">
+      <mat-list-item *ngFor="let contact of contacts" (click)="navigateToContact(contact)">
         <app-avatar>{{contact.name[0]}} </app-avatar>
         <span class="ml-2">
           {{contact.name}}
@@ -10,4 +10,9 @@
       </mat-list-item>
     </mat-list>
   </section>
+  <app-float-action-button>
+    <a routerLink="/contacts/create" class="h-full w-full flex items-center justify-center">
+      <mat-icon>add</mat-icon>
+    </a>
+  </app-float-action-button>
 </app-layout>

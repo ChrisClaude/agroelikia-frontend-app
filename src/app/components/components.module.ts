@@ -13,10 +13,12 @@ import {DeleteShopDialogComponent} from "@/components/delete-shop-dialog/delete-
 import {ClickStopPropagationDirective} from "../directives/click-stop-propagation.directive";
 import {SwiperModule} from "swiper/angular";
 import { AvatarComponent } from "@/components/avatar/avatar.component";
+import { FloatActionButtonComponent } from "@/components/float-action-button/float-action-button.component";
 
 const components = [
   LayoutComponent, HeaderComponent, SidenavComponent, ProductItemComponent, ProductListComponent,
-  CarouselComponent, ConfirmPasswordDirective, DeleteShopDialogComponent, ClickStopPropagationDirective, AvatarComponent
+  CarouselComponent, ConfirmPasswordDirective, DeleteShopDialogComponent, ClickStopPropagationDirective,
+  AvatarComponent, FloatActionButtonComponent
 ];
 
 @NgModule({

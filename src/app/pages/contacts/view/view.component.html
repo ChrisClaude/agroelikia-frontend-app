@@ -1,1 +1,5 @@
-<p>view works!</p>
+<app-layout>
+  <section class="py-10 px-4 lg:px-10">
+    <h3>{{($contact | async)?.name}}</h3>
+  </section>
+</app-layout>
