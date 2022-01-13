@@ -7,6 +7,7 @@ import {ComponentsModule} from "@/components/components.module";
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
+import { MaterialModule } from "@/material/material.module";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ViewComponent } from './view/view.component';
   imports: [
     CommonModule,
     ContactsRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MaterialModule
   ]
 })
 export class ContactsModule {

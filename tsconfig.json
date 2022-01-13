@@ -8,7 +8,8 @@
       "@/services/*": ["app/services/*"],
       "@/components/*": ["app/components/*"],
       "@/pages/*": ["app/pages/*"],
-      "@/auth/*": ["app/auth/*"]
+      "@/auth/*": ["app/auth/*"],
+      "@/material/*": ["app/material/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
