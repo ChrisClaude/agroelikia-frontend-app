@@ -36,7 +36,7 @@ export class ViewComponent implements OnInit {
     const result = this.cartService.addProductToCart(cartItem);
 
     if (result) {
-      this.snackbarService.showSnackbar(`${(this.product as Product).name} ajouté au panier`, 'OK');
+      this.snackbarService.showSnackbar(`${(this.product as Product).name} ajouté au panier`, 'OK', 2000);
     }
   }
 }
