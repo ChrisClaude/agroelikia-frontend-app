@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../auth/services/auth.service';
+import {AuthService} from "@/auth/services/auth.service";
+import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {SidenavService} from "@/services/sidenav.service";
 import {CartService} from "@/services/cart.service";
@@ -11,17 +12,20 @@ import {CartService} from "@/services/cart.service";
 })
 export class HeaderComponent implements OnInit {
   user: User | null = null;
+  isHomePage: boolean = true;
 
   constructor(
     private auth: AuthService,
     private router: Router,
     private sidenavService: SidenavService,
-    public cartService: CartService
+    public cartService: CartService,
+    private _location: Location
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.auth.getUser();
+    this.isHomePage = this.router.url === '/';
   }
 
   login(): void {
@@ -46,5 +50,9 @@ export class HeaderComponent implements OnInit {
 
   navigateToCart() {
     this.router.navigate(['/cart'])
+  }
+
+  navigateToPreviousPage() {
+    this._location.back();
   }
 }

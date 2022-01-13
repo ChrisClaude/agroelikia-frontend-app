@@ -3,6 +3,9 @@
   <button class="flex items-center cursor-pointer lg:hidden" (click)="toggleSideNav()">
     <mat-icon [inline]="true" class="menu-icon" aria-hidden="false" aria-label="menu icon">menu</mat-icon>
   </button>
+  <button *ngIf="!isHomePage" class="flex items-center cursor-pointer lg:hidden" (click)="navigateToPreviousPage()">
+    <mat-icon [inline]="true" class="menu-icon" aria-hidden="false" aria-label="menu icon">arrow_back</mat-icon>
+  </button>
   <div class="flex items-center border-b-0 border-solid border-gray-200 h-14 text-2xl lg:w-2/12 lg:border-b-3">
     <a routerLink="/" class="pr-6 pl-8">Agroelikia</a>
   </div>

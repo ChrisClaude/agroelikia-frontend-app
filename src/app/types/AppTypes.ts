@@ -88,3 +88,21 @@ interface CartItem {
   product: Product;
   quantity: number;
 }
+
+/**
+ * @description a contact represents an entity that provides products that could be purchased
+ * @export interface Contact
+ * @interface Contact
+ */
+interface Contact {
+  id?: number;
+  name: string;
+  email?: string;
+  organization: string;
+  typeOfActivity: string;
+  phone: string;
+  productDescription: string;
+  address: string;
+  creator?: User;
+  products?: Product[];
+}
