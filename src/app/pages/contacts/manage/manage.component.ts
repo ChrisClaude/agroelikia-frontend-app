@@ -21,6 +21,7 @@ export class ManageComponent implements OnInit {
   ngOnInit(): void {
     this.contactService.getUsersContacts().subscribe(contacts => {
       this.contacts = contacts;
+      console.log(this.contacts);
     });
   }
 
