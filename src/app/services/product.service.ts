@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ErrorService } from "@/services/error.service";
 import { AuthService } from "@/auth/services/auth.service";
-import { map, Observable, of, shareReplay } from "rxjs";
+import { map, mergeMap, Observable, of, shareReplay, switchMap, timer } from "rxjs";
 import { environment } from "@/environments/environment";
-import { catchError, concatMap, tap } from "rxjs/operators";
+import { catchError } from "rxjs/operators";
 
 const CACHE_SIZE = 1;
+const REFRESH_INTERVAL = 60000; // 60 seconds
 
 @Injectable({
   providedIn: "root"
@@ -20,11 +21,13 @@ export class ProductService {
 
   get products() {
     if (!this.cache$) {
-      this.cache$ = this.requestProducts()
-        .pipe(
-          catchError(this.errorService.handleError<Array<Product>>("getProducts")),
-          shareReplay(CACHE_SIZE)
-        );
+      const timer$ = timer(0, REFRESH_INTERVAL);
+
+      this.cache$ = timer$.pipe(
+        switchMap(_ => this.requestProducts()),
+        shareReplay(CACHE_SIZE),
+        catchError(this.errorService.handleError<Array<Product>>("getProducts"))
+      );
     }
     return this.cache$;
   }
@@ -46,7 +49,7 @@ export class ProductService {
   getProductById(id: number): Observable<Product> {
     return this.products.pipe(
       map(products => products.find(p => p.id === id)),
-      concatMap(product => {
+      mergeMap(product => {
         if (product) {
           return of(product);
         } else {
