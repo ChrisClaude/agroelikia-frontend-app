@@ -35,15 +35,15 @@ export class EditProductComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
       this.productService.getProductById(+id).subscribe(product => {
-        this.editProductForm.patchValue( {
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          shop: (product.shop as Shop).name,
-          isAvailable: product.isAvailable,
-        });
+          this.editProductForm.patchValue( {
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            shop: (product.shop as Shop).name,
+            isAvailable: product.isAvailable,
+          });
 
-        this.productImages = product.images as Image[];
+          this.productImages = product.images as Image[];
       });
     }
   }

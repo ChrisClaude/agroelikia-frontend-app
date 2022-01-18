@@ -1,6 +1,6 @@
-<div *ngIf="product"
-     class="product-item-container rounded-3xl relative cursor-pointer select-none lg:p-4 lg:w-72 lg:scale-100 lg:border lg:border-gray-500 lg:border-solid"
-     (click)="navigateToProduct()"
+<div
+  class="product-item-container rounded-3xl relative cursor-pointer select-none lg:p-4 lg:w-72 lg:scale-100 lg:border lg:border-gray-500 lg:border-solid"
+  (click)="navigateToProduct()"
 >
   <div *ngIf="product.images && product.images.length > 0" class="flex justify-center">
     <img src="{{product.images[0].formats.thumbnail.url}}" class="w-full h-52 object-cover lg:w-44"
