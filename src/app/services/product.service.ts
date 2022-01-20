@@ -7,7 +7,7 @@ import { environment } from "@/environments/environment";
 import { catchError } from "rxjs/operators";
 
 const CACHE_SIZE = 1;
-const REFRESH_INTERVAL = 60000; // 60 seconds
+const REFRESH_INTERVAL = 3 * 60000; // 3 minutes
 
 @Injectable({
   providedIn: "root"
