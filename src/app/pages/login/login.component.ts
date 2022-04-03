@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
       Validators.pattern('^[a-zA-Z][a-zA-Z]+.+')]),
     password: new FormControl('', [Validators.required,
       Validators.minLength(8),
-      Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')]),
+      Validators.pattern('[a-zA-Z0-9]+')]),
   });
 
-  error = null;
+  error: string | null = null;
 
   ngOnInit(): void {
   }
@@ -33,9 +33,16 @@ export class LoginComponent implements OnInit {
     if (this.userLoginForm.valid) {
       this.spinner.show();
       this.authService.login({identifier: this.userLoginForm.get('email')?.value, password: this.userLoginForm.get('password')?.value})
-        .subscribe(success => {
+        .subscribe(res => {
+          console.log(res);
+          if (res.jwt != null) {
+            this.spinner.hide();
+            this.router.navigateByUrl('/');
+            return;
+          }
+
+          alert('Email ou mot de passe incorrect');
           this.spinner.hide();
-          this.router.navigateByUrl('/');
         });
     }
   }
