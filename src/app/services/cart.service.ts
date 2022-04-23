@@ -10,10 +10,8 @@ import { ErrorService } from "@/services/error.service";
 })
 export class CartService {
 
-  //@ts-ignore
   private _cart: CartItem[] = [];
-  //@ts-ignore
-  private _totalCost: number;
+  private _totalCost: number = 0;
   private LOCAL_STORAGE_CART_KEY = 'cart';
 
   constructor(private authService: AuthService, private http: HttpClient, private errorService: ErrorService) {
@@ -24,8 +22,7 @@ export class CartService {
       localStorage.getItem(this.LOCAL_STORAGE_CART_KEY)
         ? this._cart = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_CART_KEY) as string)
         : this._cart = [];
-      // initialize total cost
-      this._totalCost = 0;
+
       if (this._cart.length > 0) {
         this._cart.forEach(item => {
           this._totalCost += item.product.price * item.quantity;
