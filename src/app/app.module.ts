@@ -14,7 +14,7 @@ import { PageNotFoundComponent } from "@/pages/page-not-found/page-not-found.com
 import { HomeComponent } from "@/pages/home/home.component";
 import { AuthRedirectComponent } from "@/components/auth-redirect/auth-redirect.component";
 import { RegisterComponent } from "@/pages/register/register.component";
-import { OrderFormComponent } from '@/pages/cart/orders/order-form.component';
+
 
 
 @NgModule({
@@ -25,7 +25,6 @@ import { OrderFormComponent } from '@/pages/cart/orders/order-form.component';
     HomeComponent,
     AuthRedirectComponent,
     RegisterComponent,
-    OrderFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -63,6 +63,8 @@ export class CartService {
       return false;
     }
 
+    cartItem.isActive = true;
+
     this._cart.push(cartItem);
     localStorage.setItem(this.LOCAL_STORAGE_CART_KEY, JSON.stringify(this._cart));
     this._totalCost += cartItem.product.price * cartItem.quantity;
@@ -151,4 +153,13 @@ export class CartService {
     }
   }
 
+  clearCart() {
+    this._totalCost = 0;
+    localStorage.removeItem(this.LOCAL_STORAGE_CART_KEY);
+
+    if (this.authService.isAuthenticated()) {
+      // TODO: mark all cart items as inactive on the backend and set array to empty
+      this._cart = [];
+    }
+  }
 }

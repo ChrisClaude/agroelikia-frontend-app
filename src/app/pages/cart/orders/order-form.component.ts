@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { CartService } from "@/services/cart.service";
 import { OrdersService } from "@/services/orders.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -13,7 +14,7 @@ export class OrderFormComponent implements OnInit {
   total = 0;
   itemsCount = 0;
 
-  constructor(private cartService: CartService, private ordersService: OrdersService) { }
+  constructor(private cartService: CartService, private ordersService: OrdersService, private router: Router) { }
 
   orderForm = new FormGroup({
     address: new FormControl('', [
@@ -30,4 +31,9 @@ export class OrderFormComponent implements OnInit {
     this.itemsCount = this.cartService.cart.length;
   }
 
+  createOrder() {
+    // this.ordersService.createOrder(this.orderForm.value);
+    // this.cartService.clearCart();
+    this.router.navigate(['cart/orders/success']);
+  }
 }

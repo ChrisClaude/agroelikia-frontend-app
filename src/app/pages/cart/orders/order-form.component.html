@@ -1,7 +1,7 @@
 <app-layout>
   <section class="px-4 py-6">
     <h1>Confirmer ma commande</h1>
-    <form [formGroup]="orderForm">
+    <form (submit)="createOrder()" [formGroup]="orderForm">
       <div>
         <mat-form-field class="w-full">
           <input formControlName="address" name="address" matInput placeholder="Addresse" type="text">

@@ -5,17 +5,23 @@ import {CartRoutingModule} from './cart-routing.module';
 import {ViewComponent} from './view/view.component';
 import {ComponentsModule} from "@/components/components.module";
 import {MaterialModule} from 'app/material/material.module';
+import { OrderFormComponent } from '@/pages/cart/orders/order-form.component';
+import { OrderConfirmationComponent } from "./orders/order-confirmation/order-confirmation.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
   declarations: [
-    ViewComponent
+    ViewComponent,
+    OrderFormComponent,
+    OrderConfirmationComponent,
   ],
   imports: [
     CommonModule,
     CartRoutingModule,
     ComponentsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CartModule {
