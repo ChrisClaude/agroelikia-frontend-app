@@ -29,4 +29,8 @@ export class ViewComponent implements OnInit {
   decrementProductQuantity(cartItem: CartItem) {
     this.cartService.decrementProductQuantity(cartItem.product.id as number);
   }
+
+  proceedToOrder() {
+    this.router.navigate(['cart/orders/form']);
+  }
 }

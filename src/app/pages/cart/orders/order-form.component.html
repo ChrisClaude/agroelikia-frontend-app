@@ -1,0 +1,23 @@
+<app-layout>
+  <section class="px-4 py-6">
+    <h1>Confirmer ma commande</h1>
+    <form [formGroup]="orderForm">
+      <div>
+        <mat-form-field class="w-full">
+          <input formControlName="address" name="address" matInput placeholder="Addresse" type="text">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="w-full">
+          <input formControlName="telephone" name="telephone" matInput placeholder="Telephone" type="text">
+        </mat-form-field>
+      </div>
+      <div class="h-20 w-full bg-gray-200 p-1.5 mb-4">
+        Votre panier fait un total de {{total}}FCFA et contient {{itemsCount}} articles
+      </div>
+      <div>
+        <button color="primary" mat-raised-button type="submit">Confirmer</button>
+      </div>
+    </form>
+  </section>
+</app-layout>

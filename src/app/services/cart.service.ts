@@ -72,7 +72,6 @@ export class CartService {
         .pipe(
           catchError(this.errorService.handleError<CartItem>('createCartItem', cartItem))
         ).subscribe(cartItem => {
-        console.log(cartItem);
         this._cart = this._cart.map(item => item.product.id === cartItem.product.id ? cartItem : item);
       });
     }
