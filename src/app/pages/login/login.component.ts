@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       Validators.pattern('^[a-zA-Z][a-zA-Z]+.+')]),
     password: new FormControl('', [Validators.required,
       Validators.minLength(8),
-      Validators.pattern('[a-zA-Z0-9]+')]),
+      Validators.pattern('[a-zA-Z0-9]+.+')]),
   });
 
   error: string | null = null;
