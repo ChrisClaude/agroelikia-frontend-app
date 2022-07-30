@@ -7,7 +7,8 @@ import {ComponentsModule} from "@/components/components.module";
 import {MaterialModule} from 'app/material/material.module';
 import { OrderFormComponent } from '@/pages/cart/orders/order-form.component';
 import { OrderConfirmationComponent } from "./orders/order-confirmation/order-confirmation.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
+import {OrderPaymentComponent} from './order-payment/order-payment.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     ViewComponent,
     OrderFormComponent,
     OrderConfirmationComponent,
+    OrderPaymentComponent,
   ],
   imports: [
     CommonModule,

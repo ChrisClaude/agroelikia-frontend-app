@@ -49,7 +49,9 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "space-in-brackets": 1
+      }
     }
   ]
 }
